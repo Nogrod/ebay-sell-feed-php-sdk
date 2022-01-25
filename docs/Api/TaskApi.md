@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 ## `uploadFile()`
 
 ```php
-uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type): object
+uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file): object
 ```
 
 
@@ -358,9 +358,10 @@ $name = 'name_example'; // string | A content identifier. The only presently sup
 $read_date = 'read_date_example'; // string | The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z
 $size = 56; // int | The size of the file.
 $type = 'type_example'; // string | The file type. The only presently supported type is form-data.
+$file = "/path/to/file.txt"; // \SplFileObject | The file to upload.
 
 try {
-    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type);
+    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -379,6 +380,7 @@ Name | Type | Description  | Notes
  **read_date** | **string**| The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z | [optional]
  **size** | **int**| The size of the file. | [optional]
  **type** | **string**| The file type. The only presently supported type is form-data. | [optional]
+ **file** | **\SplFileObject****\SplFileObject**| The file to upload. | [optional]
 
 ### Return type
 

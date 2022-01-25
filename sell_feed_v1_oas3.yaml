@@ -1950,6 +1950,10 @@ components:
         type:
           type: string
           description: The file type. The only presently supported type is form-data.
+        file:
+          type: string
+          format: binary
+          description: The file to upload.
       description: The metadata for the file.
     InventoryFilterCriteria:
       type: object

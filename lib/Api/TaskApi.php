@@ -1493,7 +1493,6 @@ class TaskApi
      * Operation uploadFile
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $file The file.
      * @param  string $creation_date The file creation date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 8, 2019 2019-09-08T00:00:00.000Z (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 9, 2019 2019-09-09T00:00:00.000Z (optional)
@@ -1501,14 +1500,15 @@ class TaskApi
      * @param  string $read_date The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is form-data. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function uploadFile($task_id, $file, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null)
+    public function uploadFile($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null)
     {
-        list($response) = $this->uploadFileWithHttpInfo($task_id, $file, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type);
+        list($response) = $this->uploadFileWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
         return $response;
     }
 
@@ -1516,7 +1516,6 @@ class TaskApi
      * Operation uploadFileWithHttpInfo
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $file The file.
      * @param  string $creation_date The file creation date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 8, 2019 2019-09-08T00:00:00.000Z (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 9, 2019 2019-09-09T00:00:00.000Z (optional)
@@ -1524,14 +1523,15 @@ class TaskApi
      * @param  string $read_date The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is form-data. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadFileWithHttpInfo($task_id, $file, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null)
+    public function uploadFileWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null)
     {
-        $request = $this->uploadFileRequest($task_id, $file, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1615,7 +1615,6 @@ class TaskApi
      * Operation uploadFileAsync
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $file The file.
      * @param  string $creation_date The file creation date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 8, 2019 2019-09-08T00:00:00.000Z (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 9, 2019 2019-09-09T00:00:00.000Z (optional)
@@ -1623,13 +1622,14 @@ class TaskApi
      * @param  string $read_date The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is form-data. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadFileAsync($task_id, $file, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null)
+    public function uploadFileAsync($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null)
     {
-        return $this->uploadFileAsyncWithHttpInfo($task_id, $file, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type)
+        return $this->uploadFileAsyncWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1641,7 +1641,6 @@ class TaskApi
      * Operation uploadFileAsyncWithHttpInfo
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $file The file.
      * @param  string $creation_date The file creation date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 8, 2019 2019-09-08T00:00:00.000Z (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 9, 2019 2019-09-09T00:00:00.000Z (optional)
@@ -1649,14 +1648,15 @@ class TaskApi
      * @param  string $read_date The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is form-data. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadFileAsyncWithHttpInfo($task_id, $file, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null)
+    public function uploadFileAsyncWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null)
     {
         $returnType = 'object';
-        $request = $this->uploadFileRequest($task_id, $file, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1695,7 +1695,6 @@ class TaskApi
      * Create request for operation 'uploadFile'
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $file The file.
      * @param  string $creation_date The file creation date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 8, 2019 2019-09-08T00:00:00.000Z (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 9, 2019 2019-09-09T00:00:00.000Z (optional)
@@ -1703,11 +1702,12 @@ class TaskApi
      * @param  string $read_date The date you read the file. Format: UTC yyyy-MM-ddThh:mm:ss.SSSZ For example: Created on September 10, 2019 2019-09-10T00:00:00.000Z (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is form-data. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadFileRequest($task_id, $file, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null)
+    public function uploadFileRequest($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null)
     {
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -1721,7 +1721,7 @@ class TaskApi
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
-        $multipart = true;
+        $multipart = false;
 
 
 
@@ -1743,10 +1743,6 @@ class TaskApi
             $formParams['fileName'] = ObjectSerializer::toFormValue($file_name);
         }
         // form params
-        if ($file !== null) {
-            $formParams['file'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($file), 'rb');
-        }
-        // form params
         if ($modification_date !== null) {
             $formParams['modificationDate'] = ObjectSerializer::toFormValue($modification_date);
         }
@@ -1765,6 +1761,18 @@ class TaskApi
         // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
+        }
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = [];
+            $paramFiles = is_array($file) ? $file : [$file];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['file'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
         }
 
         if ($multipart) {
