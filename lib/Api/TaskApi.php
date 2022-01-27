@@ -351,7 +351,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getInputFile($task_id)
     {
@@ -366,7 +366,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInputFileWithHttpInfo($task_id)
     {
@@ -409,20 +409,20 @@ class TaskApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -440,7 +440,7 @@ class TaskApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -478,7 +478,7 @@ class TaskApi
      */
     public function getInputFileAsyncWithHttpInfo($task_id)
     {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getInputFileRequest($task_id);
 
         return $this->client
@@ -618,7 +618,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getResultFile($task_id)
     {
@@ -633,7 +633,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getResultFileWithHttpInfo($task_id)
     {
@@ -676,20 +676,20 @@ class TaskApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -707,7 +707,7 @@ class TaskApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -745,7 +745,7 @@ class TaskApi
      */
     public function getResultFileAsyncWithHttpInfo($task_id)
     {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getResultFileRequest($task_id);
 
         return $this->client

@@ -76,7 +76,7 @@ void (empty response body)
 ## `getInputFile()`
 
 ```php
-getInputFile($task_id): object
+getInputFile($task_id): \SplFileObject
 ```
 
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 ## `getResultFile()`
 
 ```php
-getResultFile($task_id): object
+getResultFile($task_id): \SplFileObject
 ```
 
 
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 

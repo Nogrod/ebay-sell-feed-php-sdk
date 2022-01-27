@@ -2189,7 +2189,8 @@ components:
           type: string
           description: The unique eBay-assigned ID of the task.
     StreamingOutput:
-      type: object
+      type: string
+      format: binary
       description: File stream
     SupportedConfiguration:
       type: object
