@@ -1,6 +1,6 @@
 {
     "name": "nogrod/ebay-sell-feed-php-sdk",
-    "version": "0.0.1",
+    "license": "MIT",
     "description": "<p>The <strong>Feed API</strong> lets sellers upload input files, download reports and files including their status, filter reports using URI parameters, and retrieve customer service metrics task details.</p>",
     "keywords": [
         "openapitools",
@@ -10,6 +10,12 @@
         "sdk",
         "rest",
         "api"
+    ],
+    "authors": [
+        {
+            "name": "Nogrod",
+            "email": "strikeomania@gmail.com"
+        }
     ],
     "homepage": "https://openapi-generator.tech",
     "license": "unlicense",
