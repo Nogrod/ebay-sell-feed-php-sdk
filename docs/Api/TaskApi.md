@@ -76,7 +76,7 @@ void (empty response body)
 ## `getInputFile()`
 
 ```php
-getInputFile($task_id): object
+getInputFile($task_id): \SplFileObject
 ```
 
 
@@ -118,7 +118,7 @@ try {
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `getResultFile()`
 
 ```php
-getResultFile($task_id): object
+getResultFile($task_id): \SplFileObject
 ```
 
 
@@ -178,7 +178,7 @@ try {
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 
@@ -326,7 +326,7 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type): object
+uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file): object
 ```
 
 
@@ -358,9 +358,10 @@ $name = 'name_example'; // string | A content identifier. The only presently sup
 $read_date = 'read_date_example'; // string | The date you read the file. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 10, 2019</p><p><code>2019-09-10T00:00:00.000Z</code></p>
 $size = 56; // int | The size of the file.
 $type = 'type_example'; // string | The file type. The only presently supported type is <code>form-data</code>.
+$file = "/path/to/file.txt"; // \SplFileObject | The file to upload.
 
 try {
-    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type);
+    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -379,6 +380,7 @@ try {
 | **read_date** | **string**| The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; | [optional] |
 | **size** | **int**| The size of the file. | [optional] |
 | **type** | **string**| The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| The file to upload. | [optional] |
 
 ### Return type
 

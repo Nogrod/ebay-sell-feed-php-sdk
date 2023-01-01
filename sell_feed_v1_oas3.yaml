@@ -1951,6 +1951,10 @@ components:
         type:
           type: string
           description: The file type. The only presently supported type is <code>form-data</code>.
+        file:
+          type: string
+          format: binary
+          description: The file to upload.
       description: The metadata for the file.
     InventoryFilterCriteria:
       type: object
@@ -2174,7 +2178,8 @@ components:
           type: string
           description: The unique eBay-assigned ID of the task.
     StreamingOutput:
-      type: object
+      type: string
+      format: binary
       description: File stream
     SupportedConfiguration:
       type: object

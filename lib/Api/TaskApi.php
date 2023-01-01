@@ -379,7 +379,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getInputFile($task_id, string $contentType = self::contentTypes['getInputFile'][0])
     {
@@ -395,7 +395,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInputFileWithHttpInfo($task_id, string $contentType = self::contentTypes['getInputFile'][0])
     {
@@ -438,23 +438,23 @@ class TaskApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -475,7 +475,7 @@ class TaskApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -515,7 +515,7 @@ class TaskApi
      */
     public function getInputFileAsyncWithHttpInfo($task_id, string $contentType = self::contentTypes['getInputFile'][0])
     {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getInputFileRequest($task_id, $contentType);
 
         return $this->client
@@ -658,7 +658,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getResultFile($task_id, string $contentType = self::contentTypes['getResultFile'][0])
     {
@@ -674,7 +674,7 @@ class TaskApi
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getResultFileWithHttpInfo($task_id, string $contentType = self::contentTypes['getResultFile'][0])
     {
@@ -717,23 +717,23 @@ class TaskApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -754,7 +754,7 @@ class TaskApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -794,7 +794,7 @@ class TaskApi
      */
     public function getResultFileAsyncWithHttpInfo($task_id, string $contentType = self::contentTypes['getResultFile'][0])
     {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getResultFileRequest($task_id, $contentType);
 
         return $this->client
@@ -1568,15 +1568,16 @@ class TaskApi
      * @param  string $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function uploadFile($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFile($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        list($response) = $this->uploadFileWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $contentType);
+        list($response) = $this->uploadFileWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
         return $response;
     }
 
@@ -1591,15 +1592,16 @@ class TaskApi
      * @param  string $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \eBay\Sell\Feed\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadFileWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $contentType);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1696,14 +1698,15 @@ class TaskApi
      * @param  string $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadFileAsync($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileAsync($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        return $this->uploadFileAsyncWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $contentType)
+        return $this->uploadFileAsyncWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1722,15 +1725,16 @@ class TaskApi
      * @param  string $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadFileAsyncWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileAsyncWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
         $returnType = 'object';
-        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $contentType);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1779,12 +1783,13 @@ class TaskApi
      * @param  string $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  int $size The size of the file. (optional)
      * @param  string $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadFileRequest($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileRequest($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
 
         // verify the required parameter 'task_id' is set
@@ -1793,6 +1798,7 @@ class TaskApi
                 'Missing the required parameter $task_id when calling uploadFile'
             );
         }
+
 
 
 
@@ -1847,6 +1853,18 @@ class TaskApi
         // form params
         if ($type !== null) {
             $formParams['type'] = ObjectSerializer::toFormValue($type);
+        }
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = [];
+            $paramFiles = is_array($file) ? $file : [$file];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['file'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
         }
 
         $headers = $this->headerSelector->selectHeaders(
