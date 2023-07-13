@@ -138,10 +138,10 @@ paths:
       description: 'This method creates an order download task with filter criteria for the order report. When using this method, specify the <b> feedType</b>, <b> schemaVersion</b>, and <b> filterCriteria</b> for the report. The method returns the <b> location</b> response header containing the getOrderTask call URI to retrieve the order task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the order task. <br /><br />To retrieve the status of the task, use the <b> getOrderTask</b> method to retrieve a single task ID or the <b>getOrderTasks</b> method to retrieve multiple order task IDs.<p> <span class="tablenote"><strong>Note:</strong> The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.</span></p><p>The following list contains this method''s authorization scope and its corresponding feed type:<ul><li>https://api.ebay.com/oauth/api_scope/sell.fulfillment: LMS_ORDER_REPORT</li></ul> </p><p>For details about how this method is used, see <a href="/api-docs/sell/static/feed/general-feed-tasks.html">General feed types</a> in the Selling Integration Guide. <p> <span class="tablenote"><strong>Note:</strong> At this time, the <strong>createOrderTask</strong> method only supports order creation date filters and not modified order date filters. Do not include the <strong>modifiedDateRange</strong> filter in your request payload.</span></p>'
       operationId: createOrderTask
       parameters:
-        - name: X-EBAY-C-MARKETPLACE-ID
+        - name: Content-Type
           in: header
-          description: The ID of the eBay marketplace where the item is hosted. <p> <span class="tablenote"><strong>Note:</strong> This value is case sensitive.</span></p><p>For example:</p><p><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code></p><p>This identifies the eBay marketplace that applies to this task. See <a href="/api-docs/sell/feed/types/bas:MarketplaceIdEnum">MarketplaceIdEnum</a>.</p>
-          required: false
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          required: true
           schema:
             type: string
       requestBody:
@@ -386,10 +386,10 @@ paths:
       description: This method creates an inventory-related download task for a specified feed type with optional filter criteria. When using this method, specify the <strong>feedType</strong>. <br/><br/>This method returns the location response header containing the <strong>getInventoryTask</strong> call URI to retrieve the inventory task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the inventory task.<br/><br/>To retrieve the status of the task, use the <strong>getInventoryTask</strong> method to retrieve a single task ID or the <strong>getInventoryTasks</strong> method to retrieve multiple task IDs.<p> <span class="tablenote"><strong>Note:</strong> The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.</span></p>Presently, this method supports Active Inventory Report. The <strong>ActiveInventoryReport</strong> returns a report that contains price and quantity information for all of the active listings for a specific seller. A seller can use this information to maintain their inventory on eBay.
       operationId: createInventoryTask
       parameters:
-        - name: X-EBAY-C-MARKETPLACE-ID
+        - name: Content-Type
           in: header
-          description: The ID of the eBay marketplace where the item is hosted. <p> <span class="tablenote"><strong>Note:</strong> This value is case sensitive.</span></p><p>For example:</p><p><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code></p><p>This identifies the eBay marketplace that applies to this task. See <a href="/api-docs/sell/feed/types/bas:MarketplaceIdEnum">MarketplaceIdEnum</a>.</p>
-          required: false
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          required: true
           schema:
             type: string
       requestBody:
@@ -591,6 +591,13 @@ paths:
         - schedule
       description: This method creates a schedule, which is a subscription to the specified schedule template. A schedule periodically generates a report for the <strong>feedType</strong> specified by the template. Specify the same <strong>feedType</strong> as the <strong>feedType</strong> of the associated schedule template. When creating the schedule, if available from the template, you can specify a preferred trigger hour, day of the week, or day of the month. These and other fields are conditionally available as specified by the template.<p> <span class="tablenote"><strong>Note:</strong> Make sure to include all fields required by the schedule template (<strong>scheduleTemplateId</strong>). Call the <strong>getScheduleTemplate</strong> method (or the <strong>getScheduleTemplates</strong> method), to find out which fields are required or optional. If a field is optional and a default value is provided by the template, the default value will be used if omitted from the payload.</span></p>A successful call returns the location response header containing the <strong>getSchedule</strong> call URI to retrieve the schedule you just created. The URL includes the eBay-assigned schedule ID, which you can use to reference the schedule task. <br /><br />To retrieve the details of the create schedule task, use the <strong>getSchedule</strong> method for a single schedule ID or the <strong>getSchedules</strong> method to retrieve all schedule details for the specified <strong>feed_type</strong>. The number of schedules for each feedType is limited. Error code 160031 is returned when you have reached this maximum.<p> <span class="tablenote"><strong>Note:</strong> Except for schedules with a HALF-HOUR frequency, all schedules will ideally run at the start of each hour ('00' minutes). Actual start time may vary time may vary due to load and other factors.</span></p>
       operationId: createSchedule
+      parameters:
+        - name: Content-Type
+          in: header
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          required: true
+          schema:
+            type: string
       requestBody:
         description: 'In the request payload: <strong>feedType</strong> and <strong>scheduleTemplateId</strong> are required; <strong>scheduleName</strong> is optional; <strong>preferredTriggerHour</strong>, <strong>preferredTriggerDayOfWeek</strong>, <strong>preferredTriggerDayOfMonth</strong>, <strong>scheduleStartDate</strong>, <strong>scheduleEndDate</strong>, and <strong>schemaVersion</strong> are conditional.'
         content:
@@ -744,6 +751,12 @@ paths:
         - name: schedule_id
           in: path
           description: The ID of the schedule to update. This ID is generated when the schedule was created by the <strong>createSchedule</strong> method.
+          required: true
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -1042,7 +1055,7 @@ paths:
             type: string
         - name: feed_type
           in: query
-          description: 'The feed type associated with the tasks to be returned. Only use a <strong>feedType</strong> that is available for your API: <ul><li>Order Feeds: <code>LMS_ORDER_ACK, LMS_ORDER_REPORT</code></li><li>Large Merchant Services (LMS) Feeds: See <a href="/api-docs/sell/static/lms-migration/lms-to-feed-feedtype.html" target="_blank">Available FeedTypes</a></li></ul><br/>Do not use with the <strong>schedule_id</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.'
+          description: 'The feed type associated with the tasks to be returned. Only use a <strong>feedType</strong> that is available for your API: <ul><li>Order Feeds: <code>LMS_ORDER_ACK, LMS_ORDER_REPORT</code></li><li>Large Merchant Services (LMS) Feeds: See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">Available FeedTypes</a></li></ul><br/>Do not use with the <strong>schedule_id</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.'
           required: false
           schema:
             type: string
@@ -1155,13 +1168,19 @@ paths:
     post:
       tags:
         - task
-      description: 'This method creates an upload task or a download task without filter criteria. When using this method, specify the <b> feedType</b> and the feed file <b> schemaVersion</b>. The feed type specified sets the task as a download or an upload task.  <p>For details about the upload and download flows, see <a href="/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html">Working with Order Feeds</a> in the Selling Integration Guide.</p><p> <span class="tablenote"><strong>Note:</strong> The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.</span></p><p>The following list contains this method''s authorization scopes and their corresponding feed types:</p><ul><li>https://api.ebay.com/oauth/api_scope/sell.inventory: See <a href="/api-docs/sell/static/lms-migration/lms-to-feed-feedtype.html" target="_blank">LMS FeedTypes</a></li><li>https://api.ebay.com/oauth/api_scope/sell.fulfillment: LMS_ORDER_ACK (specify for upload tasks). Also see <a href="/api-docs/sell/static/lms-migration/lms-to-feed-feedtype.html" target="_blank">LMS FeedTypes</a></li><li>https://api.ebay.com/oauth/api_scope/sell.marketing: None*</li><li>https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly: None*</li></ul><p>* Reserved for future release</p>'
+      description: 'This method creates an upload task or a download task without filter criteria. When using this method, specify the <b> feedType</b> and the feed file <b> schemaVersion</b>. The feed type specified sets the task as a download or an upload task.  <p>For details about the upload and download flows, see <a href="/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html">Working with Order Feeds</a> in the Selling Integration Guide.</p><p> <span class="tablenote"><strong>Note:</strong> The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.</span></p><p>The following list contains this method''s authorization scopes and their corresponding feed types:</p><ul><li>https://api.ebay.com/oauth/api_scope/sell.inventory: See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">LMS FeedTypes</a></li><li>https://api.ebay.com/oauth/api_scope/sell.fulfillment: LMS_ORDER_ACK (specify for upload tasks). Also see <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">LMS FeedTypes</a></li><li>https://api.ebay.com/oauth/api_scope/sell.marketing: None*</li><li>https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly: None*</li></ul><p>* Reserved for future release</p>'
       operationId: createTask
       parameters:
         - name: X-EBAY-C-MARKETPLACE-ID
           in: header
           description: The ID of the eBay marketplace where the item is hosted. <p> <span class="tablenote"><strong>Note:</strong> This value is case sensitive.</span></p><p>For example:</p><p><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code></p><p>This identifies the eBay marketplace that applies to this task. See <a href="/api-docs/sell/feed/types/bas:MarketplaceIdEnum">MarketplaceIdEnum</a>.</p>
-          required: false
+          required: true
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          required: true
           schema:
             type: string
       requestBody:
@@ -1428,6 +1447,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: Content-Type
+          in: header
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>multipart/form-data</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           multipart/form-data:
@@ -1603,9 +1628,15 @@ paths:
       description: <p>Use this method to create a customer service metrics download task with filter criteria for the customer service metrics report. When using this method, specify the <strong>feedType</strong> and <strong>filterCriteria</strong> including both <strong>evaluationMarketplaceId</strong> and <strong>customerServiceMetricType</strong> for the report. The method returns the location response header containing the call URI to use with <strong>getCustomerServiceMetricTask</strong> to retrieve status and details on the task.</p><p>Only CURRENT Customer Service Metrics reports can be generated with the Sell Feed API. PROJECTED reports are not supported at this time. See the <a href="/api-docs/sell/analytics/resources/customer_service_metric/methods/getCustomerServiceMetric">getCustomerServiceMetric</a> method document in the Analytics API for more information about these two types of reports.</p><p><span class="tablenote"><strong>Note:</strong> Before calling this API, retrieve the summary of the seller's performance and rating for the customer service metric by calling <strong>getCustomerServiceMetric</strong> (part of the <a href="/api-docs/sell/analytics/resources/methods">Analytics API</a>). You can then populate the create task request fields with the values from the response. This technique eliminates failed tasks that request a report for a <strong>customerServiceMetricType</strong> and <strong>evaluationMarketplaceId</strong> that are without evaluation.</span></p>
       operationId: createCustomerServiceMetricTask
       parameters:
-        - name: accept-language
+        - name: Accept-Language
           in: header
-          description: Use this header to specify the natural language in which the authenticated user desires the response.
+          description: Use this header to specify the natural language in which the authenticated user desires the response. For example, <code>en_US</code> for English or <code>de_DE</code> for German.
+          required: true
+          schema:
+            type: string
+        - name: Content-Type
+          in: header
+          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -1739,7 +1770,7 @@ components:
       properties:
         schemaVersion:
           type: string
-          description: The schemaVersion/version number of the file format (use the schema version of the API to which you are programming):<ul><li><a href="/api-docs/sell/static/lms-migration/lms-to-feed-version-details-schema-version.html" target="_blank">LMS Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
+          description: The schemaVersion/version number of the file format (use the schema version of the API to which you are programming):<ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version" target="_blank">Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
         feedType:
           type: string
           description: The feed type associated with the inventory task you are about to create. Use a <strong>feedType</strong> that is available for your API. Presently, only one feed type is available:<ul><li><code>LMS_ACTIVE_INVENTORY_REPORT</code></li></ul><br/>See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types" target="_blank">Report download feed types</a> for more information.
@@ -1780,7 +1811,7 @@ components:
           description: The feed type associated with the task. Only use a <strong>feedType</strong> that is available for your API. Available feed types:<ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#trading-upload-feed-types" target="_blank">Inventory upload feed types</a></li><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-upload-feed-types" target="_blank">Fulfillment upload feed types</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl" target="_blank">Seller Hub feed types</a></li></ul>
         schemaVersion:
           type: string
-          description: The schemaVersion/version number of the file format (use the schema version of the API to which you are programming):<ul><li><a href="/api-docs/sell/static/lms-migration/lms-to-feed-version-details-schema-version.html" target="_blank">LMS Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
+          description: The schemaVersion/version number of the file format (use the schema version of the API to which you are programming):<ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version" target="_blank">Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
       description: The type that defines the fields for the <b> createTask</b> method.
     CreateUserScheduleRequest:
       type: object

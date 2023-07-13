@@ -17,7 +17,7 @@ All URIs are relative to https://api.ebay.com/sell/feed/v1, except if the operat
 ## `createSchedule()`
 
 ```php
-createSchedule($create_user_schedule_request): object
+createSchedule($content_type, $create_user_schedule_request): object
 ```
 
 
@@ -41,10 +41,11 @@ $apiInstance = new eBay\Sell\Feed\Api\ScheduleApi(
     new GuzzleHttp\Client(),
     $config
 );
+$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $create_user_schedule_request = new \eBay\Sell\Feed\Model\CreateUserScheduleRequest(); // \eBay\Sell\Feed\Model\CreateUserScheduleRequest | In the request payload: <strong>feedType</strong> and <strong>scheduleTemplateId</strong> are required; <strong>scheduleName</strong> is optional; <strong>preferredTriggerHour</strong>, <strong>preferredTriggerDayOfWeek</strong>, <strong>preferredTriggerDayOfMonth</strong>, <strong>scheduleStartDate</strong>, <strong>scheduleEndDate</strong>, and <strong>schemaVersion</strong> are conditional.
 
 try {
-    $result = $apiInstance->createSchedule($create_user_schedule_request);
+    $result = $apiInstance->createSchedule($content_type, $create_user_schedule_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ScheduleApi->createSchedule: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +56,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **content_type** | **string**| This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **create_user_schedule_request** | [**\eBay\Sell\Feed\Model\CreateUserScheduleRequest**](../Model/CreateUserScheduleRequest.md)| In the request payload: &lt;strong&gt;feedType&lt;/strong&gt; and &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; are required; &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. | |
 
 ### Return type
@@ -444,7 +446,7 @@ try {
 ## `updateSchedule()`
 
 ```php
-updateSchedule($schedule_id, $update_user_schedule_request)
+updateSchedule($schedule_id, $content_type, $update_user_schedule_request)
 ```
 
 
@@ -469,10 +471,11 @@ $apiInstance = new eBay\Sell\Feed\Api\ScheduleApi(
     $config
 );
 $schedule_id = 'schedule_id_example'; // string | The ID of the schedule to update. This ID is generated when the schedule was created by the <strong>createSchedule</strong> method.
+$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $update_user_schedule_request = new \eBay\Sell\Feed\Model\UpdateUserScheduleRequest(); // \eBay\Sell\Feed\Model\UpdateUserScheduleRequest | In the request payload: <strong>scheduleName</strong> is optional; <strong>preferredTriggerHour</strong>, <strong>preferredTriggerDayOfWeek</strong>, <strong>preferredTriggerDayOfMonth</strong>, <strong>scheduleStartDate</strong>, <strong>scheduleEndDate</strong>, and <strong>schemaVersion</strong> are conditional.
 
 try {
-    $apiInstance->updateSchedule($schedule_id, $update_user_schedule_request);
+    $apiInstance->updateSchedule($schedule_id, $content_type, $update_user_schedule_request);
 } catch (Exception $e) {
     echo 'Exception when calling ScheduleApi->updateSchedule: ', $e->getMessage(), PHP_EOL;
 }
@@ -483,6 +486,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **schedule_id** | **string**| The ID of the schedule to update. This ID is generated when the schedule was created by the &lt;strong&gt;createSchedule&lt;/strong&gt; method. | |
+| **content_type** | **string**| This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **update_user_schedule_request** | [**\eBay\Sell\Feed\Model\UpdateUserScheduleRequest**](../Model/UpdateUserScheduleRequest.md)| In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. | |
 
 ### Return type

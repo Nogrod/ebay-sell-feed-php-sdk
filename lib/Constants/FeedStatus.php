@@ -7,11 +7,11 @@ namespace eBay\Sell\Feed\Constants;
  */
 class FeedStatus
 {
-    const CREATED = 'CREATED';
-    const QUEUED = 'QUEUED';
-    const IN_PROCESS = 'IN_PROCESS';
-    const COMPLETED = 'COMPLETED';
-    const COMPLETED_WITH_ERROR = 'COMPLETED_WITH_ERROR';
-    const FAILED = 'FAILED';
-    const PARTIALLY_PROCESSED = 'PARTIALLY_PROCESSED';
+    public const CREATED = 'CREATED';
+    public const QUEUED = 'QUEUED';
+    public const IN_PROCESS = 'IN_PROCESS';
+    public const COMPLETED = 'COMPLETED';
+    public const COMPLETED_WITH_ERROR = 'COMPLETED_WITH_ERROR';
+    public const FAILED = 'FAILED';
+    public const PARTIALLY_PROCESSED = 'PARTIALLY_PROCESSED';
 }

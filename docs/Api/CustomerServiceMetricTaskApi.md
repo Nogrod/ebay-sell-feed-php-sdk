@@ -12,7 +12,7 @@ All URIs are relative to https://api.ebay.com/sell/feed/v1, except if the operat
 ## `createCustomerServiceMetricTask()`
 
 ```php
-createCustomerServiceMetricTask($accept_language, $create_service_metrics_task_request)
+createCustomerServiceMetricTask($accept_language, $content_type, $create_service_metrics_task_request)
 ```
 
 
@@ -36,11 +36,12 @@ $apiInstance = new eBay\Sell\Feed\Api\CustomerServiceMetricTaskApi(
     new GuzzleHttp\Client(),
     $config
 );
-$accept_language = 'accept_language_example'; // string | Use this header to specify the natural language in which the authenticated user desires the response.
+$accept_language = 'accept_language_example'; // string | Use this header to specify the natural language in which the authenticated user desires the response. For example, <code>en_US</code> for English or <code>de_DE</code> for German.
+$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $create_service_metrics_task_request = new \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest(); // \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest | Request payload containing version, feedType, and optional filterCriteria.
 
 try {
-    $apiInstance->createCustomerServiceMetricTask($accept_language, $create_service_metrics_task_request);
+    $apiInstance->createCustomerServiceMetricTask($accept_language, $content_type, $create_service_metrics_task_request);
 } catch (Exception $e) {
     echo 'Exception when calling CustomerServiceMetricTaskApi->createCustomerServiceMetricTask: ', $e->getMessage(), PHP_EOL;
 }
@@ -50,7 +51,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **accept_language** | **string**| Use this header to specify the natural language in which the authenticated user desires the response. | |
+| **accept_language** | **string**| Use this header to specify the natural language in which the authenticated user desires the response. For example, &lt;code&gt;en_US&lt;/code&gt; for English or &lt;code&gt;de_DE&lt;/code&gt; for German. | |
+| **content_type** | **string**| This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **create_service_metrics_task_request** | [**\eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest**](../Model/CreateServiceMetricsTaskRequest.md)| Request payload containing version, feedType, and optional filterCriteria. | |
 
 ### Return type

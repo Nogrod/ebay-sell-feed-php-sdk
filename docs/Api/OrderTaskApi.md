@@ -12,7 +12,7 @@ All URIs are relative to https://api.ebay.com/sell/feed/v1, except if the operat
 ## `createOrderTask()`
 
 ```php
-createOrderTask($create_order_task_request, $x_ebay_c_marketplace_id)
+createOrderTask($content_type, $create_order_task_request)
 ```
 
 
@@ -36,11 +36,11 @@ $apiInstance = new eBay\Sell\Feed\Api\OrderTaskApi(
     new GuzzleHttp\Client(),
     $config
 );
+$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $create_order_task_request = new \eBay\Sell\Feed\Model\CreateOrderTaskRequest(); // \eBay\Sell\Feed\Model\CreateOrderTaskRequest | description not needed
-$x_ebay_c_marketplace_id = 'x_ebay_c_marketplace_id_example'; // string | The ID of the eBay marketplace where the item is hosted. <p> <span class=\"tablenote\"><strong>Note:</strong> This value is case sensitive.</span></p><p>For example:</p><p><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code></p><p>This identifies the eBay marketplace that applies to this task. See <a href=\"/api-docs/sell/feed/types/bas:MarketplaceIdEnum\">MarketplaceIdEnum</a>.</p>
 
 try {
-    $apiInstance->createOrderTask($create_order_task_request, $x_ebay_c_marketplace_id);
+    $apiInstance->createOrderTask($content_type, $create_order_task_request);
 } catch (Exception $e) {
     echo 'Exception when calling OrderTaskApi->createOrderTask: ', $e->getMessage(), PHP_EOL;
 }
@@ -50,8 +50,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **content_type** | **string**| This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **create_order_task_request** | [**\eBay\Sell\Feed\Model\CreateOrderTaskRequest**](../Model/CreateOrderTaskRequest.md)| description not needed | |
-| **x_ebay_c_marketplace_id** | **string**| The ID of the eBay marketplace where the item is hosted. &lt;p&gt; &lt;span class&#x3D;\&quot;tablenote\&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This value is case sensitive.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;For example:&lt;/p&gt;&lt;p&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;/p&gt;&lt;p&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt;.&lt;/p&gt; | [optional] |
 
 ### Return type
 
