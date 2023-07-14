@@ -1583,7 +1583,6 @@ class TaskApi
      * Operation uploadFile
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  string $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
@@ -1598,9 +1597,9 @@ class TaskApi
      * @throws \InvalidArgumentException
      * @return object
      */
-    public function uploadFile($task_id, $content_type, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFile($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        list($response) = $this->uploadFileWithHttpInfo($task_id, $content_type, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
+        list($response) = $this->uploadFileWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
         return $response;
     }
 
@@ -1608,7 +1607,6 @@ class TaskApi
      * Operation uploadFileWithHttpInfo
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  string $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
@@ -1623,9 +1621,9 @@ class TaskApi
      * @throws \InvalidArgumentException
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function uploadFileWithHttpInfo($task_id, $content_type, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        $request = $this->uploadFileRequest($task_id, $content_type, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1715,7 +1713,6 @@ class TaskApi
      * Operation uploadFileAsync
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  string $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
@@ -1729,9 +1726,9 @@ class TaskApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadFileAsync($task_id, $content_type, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileAsync($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
-        return $this->uploadFileAsyncWithHttpInfo($task_id, $content_type, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType)
+        return $this->uploadFileAsyncWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1743,7 +1740,6 @@ class TaskApi
      * Operation uploadFileAsyncWithHttpInfo
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  string $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
@@ -1757,10 +1753,10 @@ class TaskApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function uploadFileAsyncWithHttpInfo($task_id, $content_type, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileAsyncWithHttpInfo($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
         $returnType = 'object';
-        $request = $this->uploadFileRequest($task_id, $content_type, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1802,7 +1798,6 @@ class TaskApi
      * Create request for operation 'uploadFile'
      *
      * @param  string $task_id The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  string $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
      * @param  string $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
      * @param  string $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
@@ -1816,20 +1811,13 @@ class TaskApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function uploadFileRequest($task_id, $content_type, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
+    public function uploadFileRequest($task_id, $creation_date = null, $file_name = null, $modification_date = null, $name = null, $read_date = null, $size = null, $type = null, $file = null, string $contentType = self::contentTypes['uploadFile'][0])
     {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $task_id when calling uploadFile'
-            );
-        }
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $content_type when calling uploadFile'
             );
         }
 
@@ -1850,10 +1838,6 @@ class TaskApi
         $multipart = false;
 
 
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
-        }
 
         // path params
         if ($task_id !== null) {

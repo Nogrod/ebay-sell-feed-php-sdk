@@ -1447,12 +1447,6 @@ paths:
           required: true
           schema:
             type: string
-        - name: Content-Type
-          in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>multipart/form-data</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
-          required: true
-          schema:
-            type: string
       requestBody:
         content:
           multipart/form-data:

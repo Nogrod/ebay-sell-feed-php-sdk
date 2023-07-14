@@ -328,7 +328,7 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($task_id, $content_type, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file): object
+uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file): object
 ```
 
 
@@ -353,7 +353,6 @@ $apiInstance = new eBay\Sell\Feed\Api\TaskApi(
     $config
 );
 $task_id = 'task_id_example'; // string | The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created.
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. It's value should be set to <b>multipart/form-data</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $creation_date = 'creation_date_example'; // string | The file creation date. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 8, 2019</p><p><code>2019-09-08T00:00:00.000Z</code></p>
 $file_name = 'file_name_example'; // string | The name of the file including its extension (for example, xml or csv) to be uploaded.
 $modification_date = 'modification_date_example'; // string | The file modified date. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 9, 2019</p><p><code>2019-09-09T00:00:00.000Z</code></p>
@@ -364,7 +363,7 @@ $type = 'type_example'; // string | The file type. The only presently supported 
 $file = "/path/to/file.txt"; // \SplFileObject | The file to upload.
 
 try {
-    $result = $apiInstance->uploadFile($task_id, $content_type, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
+    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $read_date, $size, $type, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -376,7 +375,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **task_id** | **string**| The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created. | |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. It&#39;s value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **creation_date** | **string**| The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; | [optional] |
 | **file_name** | **string**| The name of the file including its extension (for example, xml or csv) to be uploaded. | [optional] |
 | **modification_date** | **string**| The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; | [optional] |
