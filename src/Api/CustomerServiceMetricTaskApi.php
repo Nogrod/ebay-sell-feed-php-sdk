@@ -132,7 +132,6 @@ class CustomerServiceMetricTaskApi
      * Operation createCustomerServiceMetricTask
      *
      * @param  string $accept_language Use this header to specify the natural language in which the authenticated user desires the response. For example, &lt;code&gt;en-US&lt;/code&gt; for English or &lt;code&gt;de-DE&lt;/code&gt; for German. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request Request payload containing version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerServiceMetricTask'] to see the possible values for this operation
      *
@@ -142,18 +141,16 @@ class CustomerServiceMetricTaskApi
      */
     public function createCustomerServiceMetricTask(
         string $accept_language,
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
     ): void {
-        $this->createCustomerServiceMetricTaskWithHttpInfo($accept_language, $content_type, $create_service_metrics_task_request, $contentType);
+        $this->createCustomerServiceMetricTaskWithHttpInfo($accept_language, $create_service_metrics_task_request, $contentType);
     }
 
     /**
      * Operation createCustomerServiceMetricTaskWithHttpInfo
      *
      * @param  string $accept_language Use this header to specify the natural language in which the authenticated user desires the response. For example, &lt;code&gt;en-US&lt;/code&gt; for English or &lt;code&gt;de-DE&lt;/code&gt; for German. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request Request payload containing version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerServiceMetricTask'] to see the possible values for this operation
      *
@@ -163,11 +160,10 @@ class CustomerServiceMetricTaskApi
      */
     public function createCustomerServiceMetricTaskWithHttpInfo(
         string $accept_language,
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
     ): array {
-        $request = $this->createCustomerServiceMetricTaskRequest($accept_language, $content_type, $create_service_metrics_task_request, $contentType);
+        $request = $this->createCustomerServiceMetricTaskRequest($accept_language, $create_service_metrics_task_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -217,7 +213,6 @@ class CustomerServiceMetricTaskApi
      * Operation createCustomerServiceMetricTaskAsync
      *
      * @param  string $accept_language Use this header to specify the natural language in which the authenticated user desires the response. For example, &lt;code&gt;en-US&lt;/code&gt; for English or &lt;code&gt;de-DE&lt;/code&gt; for German. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request Request payload containing version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerServiceMetricTask'] to see the possible values for this operation
      *
@@ -226,11 +221,10 @@ class CustomerServiceMetricTaskApi
      */
     public function createCustomerServiceMetricTaskAsync(
         string $accept_language,
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
     ): PromiseInterface {
-        return $this->createCustomerServiceMetricTaskAsyncWithHttpInfo($accept_language, $content_type, $create_service_metrics_task_request, $contentType)
+        return $this->createCustomerServiceMetricTaskAsyncWithHttpInfo($accept_language, $create_service_metrics_task_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -242,7 +236,6 @@ class CustomerServiceMetricTaskApi
      * Operation createCustomerServiceMetricTaskAsyncWithHttpInfo
      *
      * @param  string $accept_language Use this header to specify the natural language in which the authenticated user desires the response. For example, &lt;code&gt;en-US&lt;/code&gt; for English or &lt;code&gt;de-DE&lt;/code&gt; for German. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request Request payload containing version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerServiceMetricTask'] to see the possible values for this operation
      *
@@ -251,12 +244,11 @@ class CustomerServiceMetricTaskApi
      */
     public function createCustomerServiceMetricTaskAsyncWithHttpInfo(
         $accept_language,
-        $content_type,
         $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
     ): PromiseInterface {
         $returnType = '';
-        $request = $this->createCustomerServiceMetricTaskRequest($accept_language, $content_type, $create_service_metrics_task_request, $contentType);
+        $request = $this->createCustomerServiceMetricTaskRequest($accept_language, $create_service_metrics_task_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -285,7 +277,6 @@ class CustomerServiceMetricTaskApi
      * Create request for operation 'createCustomerServiceMetricTask'
      *
      * @param  string $accept_language Use this header to specify the natural language in which the authenticated user desires the response. For example, &lt;code&gt;en-US&lt;/code&gt; for English or &lt;code&gt;de-DE&lt;/code&gt; for German. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request Request payload containing version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomerServiceMetricTask'] to see the possible values for this operation
      *
@@ -294,7 +285,6 @@ class CustomerServiceMetricTaskApi
      */
     public function createCustomerServiceMetricTaskRequest(
         $accept_language,
-        $content_type,
         $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
     ): Request {
@@ -303,13 +293,6 @@ class CustomerServiceMetricTaskApi
         if ($accept_language === null || (is_array($accept_language) && count($accept_language) === 0)) {
             throw new InvalidArgumentException(
                 'Missing the required parameter $accept_language when calling createCustomerServiceMetricTask'
-            );
-        }
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling createCustomerServiceMetricTask'
             );
         }
 
@@ -332,10 +315,6 @@ class CustomerServiceMetricTaskApi
         // header params
         if ($accept_language !== null) {
             $headerParams['Accept-Language'] = ObjectSerializer::toHeaderValue($accept_language);
-        }
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
         }
 
 

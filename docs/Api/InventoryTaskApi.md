@@ -12,7 +12,7 @@ All URIs are relative to https://api.ebay.com/sell/feed/v1, except if the operat
 ## `createInventoryTask()`
 
 ```php
-createInventoryTask($content_type, $create_inventory_task_request)
+createInventoryTask($create_inventory_task_request)
 ```
 
 
@@ -36,11 +36,10 @@ $apiInstance = new eBay\Sell\Feed\Api\InventoryTaskApi(
     new GuzzleHttp\Client(),
     $config
 );
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $create_inventory_task_request = new \eBay\Sell\Feed\Model\CreateInventoryTaskRequest(); // \eBay\Sell\Feed\Model\CreateInventoryTaskRequest | The request payload containing the version, feedType, and optional filterCriteria.
 
 try {
-    $apiInstance->createInventoryTask($content_type, $create_inventory_task_request);
+    $apiInstance->createInventoryTask($create_inventory_task_request);
 } catch (Exception $e) {
     echo 'Exception when calling InventoryTaskApi->createInventoryTask: ', $e->getMessage(), PHP_EOL;
 }
@@ -50,7 +49,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **create_inventory_task_request** | [**\eBay\Sell\Feed\Model\CreateInventoryTaskRequest**](../Model/CreateInventoryTaskRequest.md)| The request payload containing the version, feedType, and optional filterCriteria. | |
 
 ### Return type

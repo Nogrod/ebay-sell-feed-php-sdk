@@ -131,7 +131,6 @@ class InventoryTaskApi
     /**
      * Operation createInventoryTask
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request The request payload containing the version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInventoryTask'] to see the possible values for this operation
      *
@@ -140,17 +139,15 @@ class InventoryTaskApi
      * @return void
      */
     public function createInventoryTask(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
     ): void {
-        $this->createInventoryTaskWithHttpInfo($content_type, $create_inventory_task_request, $contentType);
+        $this->createInventoryTaskWithHttpInfo($create_inventory_task_request, $contentType);
     }
 
     /**
      * Operation createInventoryTaskWithHttpInfo
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request The request payload containing the version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInventoryTask'] to see the possible values for this operation
      *
@@ -159,11 +156,10 @@ class InventoryTaskApi
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInventoryTaskWithHttpInfo(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
     ): array {
-        $request = $this->createInventoryTaskRequest($content_type, $create_inventory_task_request, $contentType);
+        $request = $this->createInventoryTaskRequest($create_inventory_task_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -212,7 +208,6 @@ class InventoryTaskApi
     /**
      * Operation createInventoryTaskAsync
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request The request payload containing the version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInventoryTask'] to see the possible values for this operation
      *
@@ -220,11 +215,10 @@ class InventoryTaskApi
      * @return PromiseInterface
      */
     public function createInventoryTaskAsync(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
     ): PromiseInterface {
-        return $this->createInventoryTaskAsyncWithHttpInfo($content_type, $create_inventory_task_request, $contentType)
+        return $this->createInventoryTaskAsyncWithHttpInfo($create_inventory_task_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -235,7 +229,6 @@ class InventoryTaskApi
     /**
      * Operation createInventoryTaskAsyncWithHttpInfo
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request The request payload containing the version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInventoryTask'] to see the possible values for this operation
      *
@@ -243,12 +236,11 @@ class InventoryTaskApi
      * @return PromiseInterface
      */
     public function createInventoryTaskAsyncWithHttpInfo(
-        $content_type,
         $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
     ): PromiseInterface {
         $returnType = '';
-        $request = $this->createInventoryTaskRequest($content_type, $create_inventory_task_request, $contentType);
+        $request = $this->createInventoryTaskRequest($create_inventory_task_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -276,7 +268,6 @@ class InventoryTaskApi
     /**
      * Create request for operation 'createInventoryTask'
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request The request payload containing the version, feedType, and optional filterCriteria. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInventoryTask'] to see the possible values for this operation
      *
@@ -284,17 +275,9 @@ class InventoryTaskApi
      * @return \GuzzleHttp\Psr7\Request
      */
     public function createInventoryTaskRequest(
-        $content_type,
         $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
     ): Request {
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling createInventoryTask'
-            );
-        }
 
         // verify the required parameter 'create_inventory_task_request' is set
         if ($create_inventory_task_request === null || (is_array($create_inventory_task_request) && count($create_inventory_task_request) === 0)) {
@@ -312,10 +295,6 @@ class InventoryTaskApi
         $multipart = false;
 
 
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
-        }
 
 
 

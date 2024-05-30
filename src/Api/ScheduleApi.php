@@ -146,7 +146,6 @@ class ScheduleApi
     /**
      * Operation createSchedule
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request In the request payload: &lt;strong&gt;feedType&lt;/strong&gt; and &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; are required; &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSchedule'] to see the possible values for this operation
      *
@@ -155,18 +154,16 @@ class ScheduleApi
      * @return object
      */
     public function createSchedule(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
     ): object {
-        list($response) = $this->createScheduleWithHttpInfo($content_type, $create_user_schedule_request, $contentType);
+        list($response) = $this->createScheduleWithHttpInfo($create_user_schedule_request, $contentType);
         return $response;
     }
 
     /**
      * Operation createScheduleWithHttpInfo
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request In the request payload: &lt;strong&gt;feedType&lt;/strong&gt; and &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; are required; &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSchedule'] to see the possible values for this operation
      *
@@ -175,11 +172,10 @@ class ScheduleApi
      * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
     public function createScheduleWithHttpInfo(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
     ): array {
-        $request = $this->createScheduleRequest($content_type, $create_user_schedule_request, $contentType);
+        $request = $this->createScheduleRequest($create_user_schedule_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -292,7 +288,6 @@ class ScheduleApi
     /**
      * Operation createScheduleAsync
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request In the request payload: &lt;strong&gt;feedType&lt;/strong&gt; and &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; are required; &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSchedule'] to see the possible values for this operation
      *
@@ -300,11 +295,10 @@ class ScheduleApi
      * @return PromiseInterface
      */
     public function createScheduleAsync(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
     ): PromiseInterface {
-        return $this->createScheduleAsyncWithHttpInfo($content_type, $create_user_schedule_request, $contentType)
+        return $this->createScheduleAsyncWithHttpInfo($create_user_schedule_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -315,7 +309,6 @@ class ScheduleApi
     /**
      * Operation createScheduleAsyncWithHttpInfo
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request In the request payload: &lt;strong&gt;feedType&lt;/strong&gt; and &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; are required; &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSchedule'] to see the possible values for this operation
      *
@@ -323,12 +316,11 @@ class ScheduleApi
      * @return PromiseInterface
      */
     public function createScheduleAsyncWithHttpInfo(
-        $content_type,
         $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
     ): PromiseInterface {
         $returnType = 'object';
-        $request = $this->createScheduleRequest($content_type, $create_user_schedule_request, $contentType);
+        $request = $this->createScheduleRequest($create_user_schedule_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -369,7 +361,6 @@ class ScheduleApi
     /**
      * Create request for operation 'createSchedule'
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request In the request payload: &lt;strong&gt;feedType&lt;/strong&gt; and &lt;strong&gt;scheduleTemplateId&lt;/strong&gt; are required; &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSchedule'] to see the possible values for this operation
      *
@@ -377,17 +368,9 @@ class ScheduleApi
      * @return \GuzzleHttp\Psr7\Request
      */
     public function createScheduleRequest(
-        $content_type,
         $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
     ): Request {
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling createSchedule'
-            );
-        }
 
         // verify the required parameter 'create_user_schedule_request' is set
         if ($create_user_schedule_request === null || (is_array($create_user_schedule_request) && count($create_user_schedule_request) === 0)) {
@@ -405,10 +388,6 @@ class ScheduleApi
         $multipart = false;
 
 
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
-        }
 
 
 
@@ -719,12 +698,12 @@ class ScheduleApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getLatestResultFile(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): object {
+    ): \SplFileObject {
         list($response) = $this->getLatestResultFileWithHttpInfo($schedule_id, $contentType);
         return $response;
     }
@@ -737,7 +716,7 @@ class ScheduleApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLatestResultFileWithHttpInfo(
         string $schedule_id,
@@ -782,11 +761,11 @@ class ScheduleApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -804,13 +783,13 @@ class ScheduleApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -843,7 +822,7 @@ class ScheduleApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -887,7 +866,7 @@ class ScheduleApi
         $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
     ): PromiseInterface {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getLatestResultFileRequest($schedule_id, $contentType);
 
         return $this->client
@@ -2362,7 +2341,6 @@ class ScheduleApi
      * Operation updateSchedule
      *
      * @param  string $schedule_id This path parameter is the unique identifier of the schedule being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/schedule/methods/getSchedules\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getSchedules&lt;/a&gt; method to retrieve schedule IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSchedule'] to see the possible values for this operation
      *
@@ -2372,18 +2350,16 @@ class ScheduleApi
      */
     public function updateSchedule(
         string $schedule_id,
-        string $content_type,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
     ): void {
-        $this->updateScheduleWithHttpInfo($schedule_id, $content_type, $update_user_schedule_request, $contentType);
+        $this->updateScheduleWithHttpInfo($schedule_id, $update_user_schedule_request, $contentType);
     }
 
     /**
      * Operation updateScheduleWithHttpInfo
      *
      * @param  string $schedule_id This path parameter is the unique identifier of the schedule being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/schedule/methods/getSchedules\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getSchedules&lt;/a&gt; method to retrieve schedule IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSchedule'] to see the possible values for this operation
      *
@@ -2393,11 +2369,10 @@ class ScheduleApi
      */
     public function updateScheduleWithHttpInfo(
         string $schedule_id,
-        string $content_type,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
     ): array {
-        $request = $this->updateScheduleRequest($schedule_id, $content_type, $update_user_schedule_request, $contentType);
+        $request = $this->updateScheduleRequest($schedule_id, $update_user_schedule_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2447,7 +2422,6 @@ class ScheduleApi
      * Operation updateScheduleAsync
      *
      * @param  string $schedule_id This path parameter is the unique identifier of the schedule being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/schedule/methods/getSchedules\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getSchedules&lt;/a&gt; method to retrieve schedule IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSchedule'] to see the possible values for this operation
      *
@@ -2456,11 +2430,10 @@ class ScheduleApi
      */
     public function updateScheduleAsync(
         string $schedule_id,
-        string $content_type,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
     ): PromiseInterface {
-        return $this->updateScheduleAsyncWithHttpInfo($schedule_id, $content_type, $update_user_schedule_request, $contentType)
+        return $this->updateScheduleAsyncWithHttpInfo($schedule_id, $update_user_schedule_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2472,7 +2445,6 @@ class ScheduleApi
      * Operation updateScheduleAsyncWithHttpInfo
      *
      * @param  string $schedule_id This path parameter is the unique identifier of the schedule being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/schedule/methods/getSchedules\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getSchedules&lt;/a&gt; method to retrieve schedule IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSchedule'] to see the possible values for this operation
      *
@@ -2481,12 +2453,11 @@ class ScheduleApi
      */
     public function updateScheduleAsyncWithHttpInfo(
         $schedule_id,
-        $content_type,
         $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
     ): PromiseInterface {
         $returnType = '';
-        $request = $this->updateScheduleRequest($schedule_id, $content_type, $update_user_schedule_request, $contentType);
+        $request = $this->updateScheduleRequest($schedule_id, $update_user_schedule_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2515,7 +2486,6 @@ class ScheduleApi
      * Create request for operation 'updateSchedule'
      *
      * @param  string $schedule_id This path parameter is the unique identifier of the schedule being updated. &lt;br&gt;&lt;br&gt; Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/schedule/methods/getSchedules\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getSchedules&lt;/a&gt; method to retrieve schedule IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request In the request payload: &lt;strong&gt;scheduleName&lt;/strong&gt; is optional; &lt;strong&gt;preferredTriggerHour&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfWeek&lt;/strong&gt;, &lt;strong&gt;preferredTriggerDayOfMonth&lt;/strong&gt;, &lt;strong&gt;scheduleStartDate&lt;/strong&gt;, &lt;strong&gt;scheduleEndDate&lt;/strong&gt;, and &lt;strong&gt;schemaVersion&lt;/strong&gt; are conditional. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSchedule'] to see the possible values for this operation
      *
@@ -2524,7 +2494,6 @@ class ScheduleApi
      */
     public function updateScheduleRequest(
         $schedule_id,
-        $content_type,
         $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
     ): Request {
@@ -2533,13 +2502,6 @@ class ScheduleApi
         if ($schedule_id === null || (is_array($schedule_id) && count($schedule_id) === 0)) {
             throw new InvalidArgumentException(
                 'Missing the required parameter $schedule_id when calling updateSchedule'
-            );
-        }
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling updateSchedule'
             );
         }
 
@@ -2559,10 +2521,6 @@ class ScheduleApi
         $multipart = false;
 
 
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
-        }
 
         // path params
         if ($schedule_id !== null) {

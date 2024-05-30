@@ -87,7 +87,7 @@ class TaskApi
             'application/json',
         ],
         'uploadFile' => [
-            'application/json',
+            'multipart/form-data',
         ],
     ];
 
@@ -141,7 +141,6 @@ class TaskApi
      * Operation createTask
      *
      * @param  string $x_ebay_c_marketplace_id The ID of the eBay marketplace where the item is hosted. &lt;br&gt;&lt;br&gt;For example:&lt;br&gt;&lt;br&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;br&gt;&lt;br&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values.&lt;/p&gt; (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
@@ -151,18 +150,16 @@ class TaskApi
      */
     public function createTask(
         string $x_ebay_c_marketplace_id,
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
     ): void {
-        $this->createTaskWithHttpInfo($x_ebay_c_marketplace_id, $content_type, $create_task_request, $contentType);
+        $this->createTaskWithHttpInfo($x_ebay_c_marketplace_id, $create_task_request, $contentType);
     }
 
     /**
      * Operation createTaskWithHttpInfo
      *
      * @param  string $x_ebay_c_marketplace_id The ID of the eBay marketplace where the item is hosted. &lt;br&gt;&lt;br&gt;For example:&lt;br&gt;&lt;br&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;br&gt;&lt;br&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values.&lt;/p&gt; (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
@@ -172,11 +169,10 @@ class TaskApi
      */
     public function createTaskWithHttpInfo(
         string $x_ebay_c_marketplace_id,
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
     ): array {
-        $request = $this->createTaskRequest($x_ebay_c_marketplace_id, $content_type, $create_task_request, $contentType);
+        $request = $this->createTaskRequest($x_ebay_c_marketplace_id, $create_task_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -226,7 +222,6 @@ class TaskApi
      * Operation createTaskAsync
      *
      * @param  string $x_ebay_c_marketplace_id The ID of the eBay marketplace where the item is hosted. &lt;br&gt;&lt;br&gt;For example:&lt;br&gt;&lt;br&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;br&gt;&lt;br&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values.&lt;/p&gt; (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
@@ -235,11 +230,10 @@ class TaskApi
      */
     public function createTaskAsync(
         string $x_ebay_c_marketplace_id,
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
     ): PromiseInterface {
-        return $this->createTaskAsyncWithHttpInfo($x_ebay_c_marketplace_id, $content_type, $create_task_request, $contentType)
+        return $this->createTaskAsyncWithHttpInfo($x_ebay_c_marketplace_id, $create_task_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -251,7 +245,6 @@ class TaskApi
      * Operation createTaskAsyncWithHttpInfo
      *
      * @param  string $x_ebay_c_marketplace_id The ID of the eBay marketplace where the item is hosted. &lt;br&gt;&lt;br&gt;For example:&lt;br&gt;&lt;br&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;br&gt;&lt;br&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values.&lt;/p&gt; (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
@@ -260,12 +253,11 @@ class TaskApi
      */
     public function createTaskAsyncWithHttpInfo(
         $x_ebay_c_marketplace_id,
-        $content_type,
         $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
     ): PromiseInterface {
         $returnType = '';
-        $request = $this->createTaskRequest($x_ebay_c_marketplace_id, $content_type, $create_task_request, $contentType);
+        $request = $this->createTaskRequest($x_ebay_c_marketplace_id, $create_task_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -294,7 +286,6 @@ class TaskApi
      * Create request for operation 'createTask'
      *
      * @param  string $x_ebay_c_marketplace_id The ID of the eBay marketplace where the item is hosted. &lt;br&gt;&lt;br&gt;For example:&lt;br&gt;&lt;br&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;br&gt;&lt;br&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values.&lt;/p&gt; (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTask'] to see the possible values for this operation
      *
@@ -303,7 +294,6 @@ class TaskApi
      */
     public function createTaskRequest(
         $x_ebay_c_marketplace_id,
-        $content_type,
         $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
     ): Request {
@@ -312,13 +302,6 @@ class TaskApi
         if ($x_ebay_c_marketplace_id === null || (is_array($x_ebay_c_marketplace_id) && count($x_ebay_c_marketplace_id) === 0)) {
             throw new InvalidArgumentException(
                 'Missing the required parameter $x_ebay_c_marketplace_id when calling createTask'
-            );
-        }
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling createTask'
             );
         }
 
@@ -341,10 +324,6 @@ class TaskApi
         // header params
         if ($x_ebay_c_marketplace_id !== null) {
             $headerParams['X-EBAY-C-MARKETPLACE-ID'] = ObjectSerializer::toHeaderValue($x_ebay_c_marketplace_id);
-        }
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
         }
 
 
@@ -421,12 +400,12 @@ class TaskApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getInputFile(
         string $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
-    ): object {
+    ): \SplFileObject {
         list($response) = $this->getInputFileWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -439,7 +418,7 @@ class TaskApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInputFileWithHttpInfo(
         string $task_id,
@@ -484,11 +463,11 @@ class TaskApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -506,13 +485,13 @@ class TaskApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -545,7 +524,7 @@ class TaskApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -589,7 +568,7 @@ class TaskApi
         $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
     ): PromiseInterface {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getInputFileRequest($task_id, $contentType);
 
         return $this->client
@@ -734,12 +713,12 @@ class TaskApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return object
+     * @return \SplFileObject
      */
     public function getResultFile(
         string $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
-    ): object {
+    ): \SplFileObject {
         list($response) = $this->getResultFileWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -752,7 +731,7 @@ class TaskApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getResultFileWithHttpInfo(
         string $task_id,
@@ -797,11 +776,11 @@ class TaskApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -819,13 +798,13 @@ class TaskApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -858,7 +837,7 @@ class TaskApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -902,7 +881,7 @@ class TaskApi
         $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
     ): PromiseInterface {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getResultFileRequest($task_id, $contentType);
 
         return $this->client
@@ -1764,7 +1743,15 @@ class TaskApi
      * Operation uploadFile
      *
      * @param  string $task_id This path parameter is the unique identifier of the task associated with the file that will be uploaded.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/task/methods/getTasks\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getTasks&lt;/a&gt; method to retrieve task IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string|null $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
+     * @param  string|null $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $name A content identifier. The only presently supported name is &lt;code&gt;file&lt;/code&gt;. (optional)
+     * @param  array<string,string>|null $parameters The parameters you want associated with the file. (optional)
+     * @param  string|null $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  int|null $size The size of the file. (optional)
+     * @param  string|null $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject|null $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1773,10 +1760,18 @@ class TaskApi
      */
     public function uploadFile(
         string $task_id,
-        string $content_type,
+        ?string $creation_date = null,
+        ?string $file_name = null,
+        ?string $modification_date = null,
+        ?string $name = null,
+        ?array $parameters = null,
+        ?string $read_date = null,
+        ?int $size = null,
+        ?string $type = null,
+        ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
     ): object {
-        list($response) = $this->uploadFileWithHttpInfo($task_id, $content_type, $contentType);
+        list($response) = $this->uploadFileWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType);
         return $response;
     }
 
@@ -1784,7 +1779,15 @@ class TaskApi
      * Operation uploadFileWithHttpInfo
      *
      * @param  string $task_id This path parameter is the unique identifier of the task associated with the file that will be uploaded.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/task/methods/getTasks\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getTasks&lt;/a&gt; method to retrieve task IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string|null $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
+     * @param  string|null $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $name A content identifier. The only presently supported name is &lt;code&gt;file&lt;/code&gt;. (optional)
+     * @param  array<string,string>|null $parameters The parameters you want associated with the file. (optional)
+     * @param  string|null $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  int|null $size The size of the file. (optional)
+     * @param  string|null $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject|null $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1793,10 +1796,18 @@ class TaskApi
      */
     public function uploadFileWithHttpInfo(
         string $task_id,
-        string $content_type,
+        ?string $creation_date = null,
+        ?string $file_name = null,
+        ?string $modification_date = null,
+        ?string $name = null,
+        ?array $parameters = null,
+        ?string $read_date = null,
+        ?int $size = null,
+        ?string $type = null,
+        ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
     ): array {
-        $request = $this->uploadFileRequest($task_id, $content_type, $contentType);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1910,7 +1921,15 @@ class TaskApi
      * Operation uploadFileAsync
      *
      * @param  string $task_id This path parameter is the unique identifier of the task associated with the file that will be uploaded.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/task/methods/getTasks\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getTasks&lt;/a&gt; method to retrieve task IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string|null $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
+     * @param  string|null $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $name A content identifier. The only presently supported name is &lt;code&gt;file&lt;/code&gt;. (optional)
+     * @param  array<string,string>|null $parameters The parameters you want associated with the file. (optional)
+     * @param  string|null $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  int|null $size The size of the file. (optional)
+     * @param  string|null $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject|null $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1918,10 +1937,18 @@ class TaskApi
      */
     public function uploadFileAsync(
         string $task_id,
-        string $content_type,
+        ?string $creation_date = null,
+        ?string $file_name = null,
+        ?string $modification_date = null,
+        ?string $name = null,
+        ?array $parameters = null,
+        ?string $read_date = null,
+        ?int $size = null,
+        ?string $type = null,
+        ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
     ): PromiseInterface {
-        return $this->uploadFileAsyncWithHttpInfo($task_id, $content_type, $contentType)
+        return $this->uploadFileAsyncWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1933,7 +1960,15 @@ class TaskApi
      * Operation uploadFileAsyncWithHttpInfo
      *
      * @param  string $task_id This path parameter is the unique identifier of the task associated with the file that will be uploaded.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/task/methods/getTasks\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getTasks&lt;/a&gt; method to retrieve task IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string|null $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
+     * @param  string|null $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $name A content identifier. The only presently supported name is &lt;code&gt;file&lt;/code&gt;. (optional)
+     * @param  array<string,string>|null $parameters The parameters you want associated with the file. (optional)
+     * @param  string|null $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  int|null $size The size of the file. (optional)
+     * @param  string|null $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject|null $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1941,11 +1976,19 @@ class TaskApi
      */
     public function uploadFileAsyncWithHttpInfo(
         $task_id,
-        $content_type,
+        $creation_date = null,
+        $file_name = null,
+        $modification_date = null,
+        $name = null,
+        $parameters = null,
+        $read_date = null,
+        $size = null,
+        $type = null,
+        $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
     ): PromiseInterface {
         $returnType = 'object';
-        $request = $this->uploadFileRequest($task_id, $content_type, $contentType);
+        $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1987,7 +2030,15 @@ class TaskApi
      * Create request for operation 'uploadFile'
      *
      * @param  string $task_id This path parameter is the unique identifier of the task associated with the file that will be uploaded.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/task/methods/getTasks\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getTasks&lt;/a&gt; method to retrieve task IDs. (required)
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
+     * @param  string|null $creation_date The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $file_name The name of the file including its extension (for example, xml or csv) to be uploaded. (optional)
+     * @param  string|null $modification_date The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  string|null $name A content identifier. The only presently supported name is &lt;code&gt;file&lt;/code&gt;. (optional)
+     * @param  array<string,string>|null $parameters The parameters you want associated with the file. (optional)
+     * @param  string|null $read_date The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; (optional)
+     * @param  int|null $size The size of the file. (optional)
+     * @param  string|null $type The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. (optional)
+     * @param  \SplFileObject|null $file The file to upload. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadFile'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1995,7 +2046,15 @@ class TaskApi
      */
     public function uploadFileRequest(
         $task_id,
-        $content_type,
+        $creation_date = null,
+        $file_name = null,
+        $modification_date = null,
+        $name = null,
+        $parameters = null,
+        $read_date = null,
+        $size = null,
+        $type = null,
+        $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
     ): Request {
 
@@ -2006,12 +2065,14 @@ class TaskApi
             );
         }
 
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling uploadFile'
-            );
-        }
+
+
+
+
+
+
+
+
 
 
         $resourcePath = '/task/{task_id}/upload_file';
@@ -2022,10 +2083,6 @@ class TaskApi
         $multipart = false;
 
 
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
-        }
 
         // path params
         if ($task_id !== null) {
@@ -2036,6 +2093,50 @@ class TaskApi
             );
         }
 
+        // form params
+        if ($creation_date !== null) {
+            $formParams['creationDate'] = ObjectSerializer::toFormValue($creation_date);
+        }
+        // form params
+        if ($file_name !== null) {
+            $formParams['fileName'] = ObjectSerializer::toFormValue($file_name);
+        }
+        // form params
+        if ($modification_date !== null) {
+            $formParams['modificationDate'] = ObjectSerializer::toFormValue($modification_date);
+        }
+        // form params
+        if ($name !== null) {
+            $formParams['name'] = ObjectSerializer::toFormValue($name);
+        }
+        // form params
+        if ($parameters !== null) {
+            $formParams['parameters'] = ObjectSerializer::toFormValue($parameters);
+        }
+        // form params
+        if ($read_date !== null) {
+            $formParams['readDate'] = ObjectSerializer::toFormValue($read_date);
+        }
+        // form params
+        if ($size !== null) {
+            $formParams['size'] = ObjectSerializer::toFormValue($size);
+        }
+        // form params
+        if ($type !== null) {
+            $formParams['type'] = ObjectSerializer::toFormValue($type);
+        }
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = [];
+            $paramFiles = is_array($file) ? $file : [$file];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['file'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
+        }
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', ],

@@ -131,7 +131,6 @@ class OrderTaskApi
     /**
      * Operation createOrderTask
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderTask'] to see the possible values for this operation
      *
@@ -140,17 +139,15 @@ class OrderTaskApi
      * @return void
      */
     public function createOrderTask(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
     ): void {
-        $this->createOrderTaskWithHttpInfo($content_type, $create_order_task_request, $contentType);
+        $this->createOrderTaskWithHttpInfo($create_order_task_request, $contentType);
     }
 
     /**
      * Operation createOrderTaskWithHttpInfo
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderTask'] to see the possible values for this operation
      *
@@ -159,11 +156,10 @@ class OrderTaskApi
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function createOrderTaskWithHttpInfo(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
     ): array {
-        $request = $this->createOrderTaskRequest($content_type, $create_order_task_request, $contentType);
+        $request = $this->createOrderTaskRequest($create_order_task_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -212,7 +208,6 @@ class OrderTaskApi
     /**
      * Operation createOrderTaskAsync
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderTask'] to see the possible values for this operation
      *
@@ -220,11 +215,10 @@ class OrderTaskApi
      * @return PromiseInterface
      */
     public function createOrderTaskAsync(
-        string $content_type,
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
     ): PromiseInterface {
-        return $this->createOrderTaskAsyncWithHttpInfo($content_type, $create_order_task_request, $contentType)
+        return $this->createOrderTaskAsyncWithHttpInfo($create_order_task_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -235,7 +229,6 @@ class OrderTaskApi
     /**
      * Operation createOrderTaskAsyncWithHttpInfo
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderTask'] to see the possible values for this operation
      *
@@ -243,12 +236,11 @@ class OrderTaskApi
      * @return PromiseInterface
      */
     public function createOrderTaskAsyncWithHttpInfo(
-        $content_type,
         $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
     ): PromiseInterface {
         $returnType = '';
-        $request = $this->createOrderTaskRequest($content_type, $create_order_task_request, $contentType);
+        $request = $this->createOrderTaskRequest($create_order_task_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -276,7 +268,6 @@ class OrderTaskApi
     /**
      * Create request for operation 'createOrderTask'
      *
-     * @param  string $content_type This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. (required)
      * @param  \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request description not needed (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrderTask'] to see the possible values for this operation
      *
@@ -284,17 +275,9 @@ class OrderTaskApi
      * @return \GuzzleHttp\Psr7\Request
      */
     public function createOrderTaskRequest(
-        $content_type,
         $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
     ): Request {
-
-        // verify the required parameter 'content_type' is set
-        if ($content_type === null || (is_array($content_type) && count($content_type) === 0)) {
-            throw new InvalidArgumentException(
-                'Missing the required parameter $content_type when calling createOrderTask'
-            );
-        }
 
         // verify the required parameter 'create_order_task_request' is set
         if ($create_order_task_request === null || (is_array($create_order_task_request) && count($create_order_task_request) === 0)) {
@@ -312,10 +295,6 @@ class OrderTaskApi
         $multipart = false;
 
 
-        // header params
-        if ($content_type !== null) {
-            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
-        }
 
 
 

@@ -15,7 +15,7 @@ All URIs are relative to https://api.ebay.com/sell/feed/v1, except if the operat
 ## `createTask()`
 
 ```php
-createTask($x_ebay_c_marketplace_id, $content_type, $create_task_request)
+createTask($x_ebay_c_marketplace_id, $create_task_request)
 ```
 
 
@@ -40,11 +40,10 @@ $apiInstance = new eBay\Sell\Feed\Api\TaskApi(
     $config
 );
 $x_ebay_c_marketplace_id = 'x_ebay_c_marketplace_id_example'; // string | The ID of the eBay marketplace where the item is hosted. <br><br>For example:<br><br><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code><br><br>This identifies the eBay marketplace that applies to this task. See <a href=\"/api-docs/sell/feed/types/bas:MarketplaceIdEnum\">MarketplaceIdEnum</a> for supported values.</p>
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
 $create_task_request = new \eBay\Sell\Feed\Model\CreateTaskRequest(); // \eBay\Sell\Feed\Model\CreateTaskRequest | description not needed
 
 try {
-    $apiInstance->createTask($x_ebay_c_marketplace_id, $content_type, $create_task_request);
+    $apiInstance->createTask($x_ebay_c_marketplace_id, $create_task_request);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->createTask: ', $e->getMessage(), PHP_EOL;
 }
@@ -55,7 +54,6 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **x_ebay_c_marketplace_id** | **string**| The ID of the eBay marketplace where the item is hosted. &lt;br&gt;&lt;br&gt;For example:&lt;br&gt;&lt;br&gt;&lt;code&gt;X-EBAY-C-MARKETPLACE-ID:EBAY_US&lt;/code&gt;&lt;br&gt;&lt;br&gt;This identifies the eBay marketplace that applies to this task. See &lt;a href&#x3D;\&quot;/api-docs/sell/feed/types/bas:MarketplaceIdEnum\&quot;&gt;MarketplaceIdEnum&lt;/a&gt; for supported values.&lt;/p&gt; | |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;application/json&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
 | **create_task_request** | [**\eBay\Sell\Feed\Model\CreateTaskRequest**](../Model/CreateTaskRequest.md)| description not needed | |
 
 ### Return type
@@ -78,7 +76,7 @@ void (empty response body)
 ## `getInputFile()`
 
 ```php
-getInputFile($task_id): object
+getInputFile($task_id): \SplFileObject
 ```
 
 
@@ -120,7 +118,7 @@ try {
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 
@@ -138,7 +136,7 @@ try {
 ## `getResultFile()`
 
 ```php
-getResultFile($task_id): object
+getResultFile($task_id): \SplFileObject
 ```
 
 
@@ -180,7 +178,7 @@ try {
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 
@@ -328,7 +326,7 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($task_id, $content_type): object
+uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file): object
 ```
 
 
@@ -353,10 +351,18 @@ $apiInstance = new eBay\Sell\Feed\Api\TaskApi(
     $config
 );
 $task_id = 'task_id_example'; // string | This path parameter is the unique identifier of the task associated with the file that will be uploaded.<br><br>Use the <a href=\"/api-docs/sell/feed/resources/task/methods/getTasks\" target=\"_blank \">getTasks</a> method to retrieve task IDs.
-$content_type = 'content_type_example'; // string | This header indicates the format of the request body provided by the client. Its value should be set to <b>multipart/form-data</b>. <br><br> For more information, refer to <a href=\"/api-docs/static/rest-request-components.html#HTTP\" target=\"_blank \">HTTP request headers</a>.
+$creation_date = 'creation_date_example'; // string | The file creation date. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 8, 2019</p><p><code>2019-09-08T00:00:00.000Z</code></p>
+$file_name = 'file_name_example'; // string | The name of the file including its extension (for example, xml or csv) to be uploaded.
+$modification_date = 'modification_date_example'; // string | The file modified date. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 9, 2019</p><p><code>2019-09-09T00:00:00.000Z</code></p>
+$name = 'name_example'; // string | A content identifier. The only presently supported name is <code>file</code>.
+$parameters = NULL; // array<string,string> | The parameters you want associated with the file.
+$read_date = 'read_date_example'; // string | The date you read the file. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 10, 2019</p><p><code>2019-09-10T00:00:00.000Z</code></p>
+$size = 56; // int | The size of the file.
+$type = 'type_example'; // string | The file type. The only presently supported type is <code>form-data</code>.
+$file = "/path/to/file.txt"; // \SplFileObject | The file to upload.
 
 try {
-    $result = $apiInstance->uploadFile($task_id, $content_type);
+    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -368,7 +374,15 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **task_id** | **string**| This path parameter is the unique identifier of the task associated with the file that will be uploaded.&lt;br&gt;&lt;br&gt;Use the &lt;a href&#x3D;\&quot;/api-docs/sell/feed/resources/task/methods/getTasks\&quot; target&#x3D;\&quot;_blank \&quot;&gt;getTasks&lt;/a&gt; method to retrieve task IDs. | |
-| **content_type** | **string**| This header indicates the format of the request body provided by the client. Its value should be set to &lt;b&gt;multipart/form-data&lt;/b&gt;. &lt;br&gt;&lt;br&gt; For more information, refer to &lt;a href&#x3D;\&quot;/api-docs/static/rest-request-components.html#HTTP\&quot; target&#x3D;\&quot;_blank \&quot;&gt;HTTP request headers&lt;/a&gt;. | |
+| **creation_date** | **string**| The file creation date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 8, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-08T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; | [optional] |
+| **file_name** | **string**| The name of the file including its extension (for example, xml or csv) to be uploaded. | [optional] |
+| **modification_date** | **string**| The file modified date. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 9, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-09T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; | [optional] |
+| **name** | **string**| A content identifier. The only presently supported name is &lt;code&gt;file&lt;/code&gt;. | [optional] |
+| **parameters** | [**array<string,string>**](../Model/array.md)| The parameters you want associated with the file. | [optional] |
+| **read_date** | **string**| The date you read the file. &lt;br /&gt;&lt;br /&gt;&lt;b&gt; Format: &lt;/b&gt; UTC &lt;code&gt;yyyy-MM-ddThh:mm:ss.SSSZ&lt;/code&gt;&lt;p&gt;&lt;b&gt;For example:&lt;/b&gt;&lt;p&gt;Created on September 10, 2019&lt;/p&gt;&lt;p&gt;&lt;code&gt;2019-09-10T00:00:00.000Z&lt;/code&gt;&lt;/p&gt; | [optional] |
+| **size** | **int**| The size of the file. | [optional] |
+| **type** | **string**| The file type. The only presently supported type is &lt;code&gt;form-data&lt;/code&gt;. | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| The file to upload. | [optional] |
 
 ### Return type
 
@@ -380,7 +394,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
