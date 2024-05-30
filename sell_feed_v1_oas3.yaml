@@ -30,7 +30,7 @@ paths:
             type: string
         - name: feed_type
           in: query
-          description: The feed type associated with the task. The only presently supported value is <code>LMS_ORDER_REPORT</code>. Do not use with the <strong>schedule_id</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.
+          description: The feed type associated with the order tasks being retrieved. The only presently supported value is <code>LMS_ORDER_REPORT</code><br><br>See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types">Report download feed types</a> for more information.<br><br><span class="tablenote"><b>Note:</b> Do not use with the <strong>schedule_id</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.</span>
           required: false
           schema:
             type: string
@@ -54,7 +54,7 @@ paths:
             type: string
         - name: schedule_id
           in: query
-          description: The schedule ID associated with the order task. A schedule periodically generates a report for the feed type specified by the schedule template (see <strong>scheduleTemplateId</strong> in <strong>createSchedule</strong>). Do not use with the <strong>feed_type</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.
+          description: The schedule ID associated with the order tasks being retrieved. A schedule periodically generates a report, and these schedules can be created with the <a href="/api-docs/sell/feed/resources/schedule/methods/createSchedule">createSchedule</a> method.<br><br><span class="tablenote"><b>Note:</b> Do not use with the <strong>feed_type</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.</span><br>Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getSchedules">getSchedules</a> method to retrieve schedule IDs.
           required: false
           schema:
             type: string
@@ -135,12 +135,12 @@ paths:
     post:
       tags:
         - order_task
-      description: 'This method creates an order download task with filter criteria for the order report. When using this method, specify the <b> feedType</b>, <b> schemaVersion</b>, and <b> filterCriteria</b> for the report. The method returns the <b> location</b> response header containing the getOrderTask call URI to retrieve the order task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the order task. <br /><br />To retrieve the status of the task, use the <b> getOrderTask</b> method to retrieve a single task ID or the <b>getOrderTasks</b> method to retrieve multiple order task IDs.<p> <span class="tablenote"><strong>Note:</strong> The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.</span></p><p>The following list contains this method''s authorization scope and its corresponding feed type:<ul><li>https://api.ebay.com/oauth/api_scope/sell.fulfillment: LMS_ORDER_REPORT</li></ul> </p><p>For details about how this method is used, see <a href="/api-docs/sell/static/feed/general-feed-tasks.html">General feed types</a> in the Selling Integration Guide. <p> <span class="tablenote"><strong>Note:</strong> At this time, the <strong>createOrderTask</strong> method only supports order creation date filters and not modified order date filters. Do not include the <strong>modifiedDateRange</strong> filter in your request payload.</span></p>'
+      description: 'This method creates an order download task with filter criteria for the order report. When using this method, specify the <b> feedType</b>, <b> schemaVersion</b>, and <b> filterCriteria</b> for the report. The method returns the <b> location</b> response header containing the getOrderTask call URI to retrieve the order task you just created. The URL includes the eBay-assigned task ID, which you can use to reference the order task. <br /><br />To retrieve the status of the task, use the <b>getOrderTask</b> method to retrieve a single task ID or the <b>getOrderTasks</b> method to retrieve multiple order task IDs.<p> <span class="tablenote"><strong>Note:</strong> The scope depends on the feed type. An error message results when an unsupported scope or feed type is specified.</span></p><p>The following list contains this method''s authorization scope and its corresponding feed type:<ul><li>https://api.ebay.com/oauth/api_scope/sell.fulfillment: LMS_ORDER_REPORT</li></ul> </p><p>For details about how this method is used, see <a href="/api-docs/sell/static/feed/general-feed-tasks.html" target="_blank">General feed types</a> in the Selling Integration Guide. <p> <span class="tablenote"><strong>Note:</strong> At this time, the <strong>createOrderTask</strong> method only supports order creation date filters and not modified order date filters. Do not include the <strong>modifiedDateRange</strong> filter in your request payload.</span></p>'
       operationId: createOrderTask
       parameters:
         - name: Content-Type
           in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -223,7 +223,7 @@ paths:
       parameters:
         - name: task_id
           in: path
-          description: The ID of the task. This ID is generated when the task was created by the <b> createOrderTask</b> method.
+          description: This path parameter is the unique identifier of the order task being retrieved.<br><br>Use the <a href="/api-docs/sell/feed/resources/order_task/methods/getOrderTasks">getOrderTasks</a> method to retrieve order task IDs.
           required: true
           schema:
             type: string
@@ -272,13 +272,13 @@ paths:
       parameters:
         - name: feed_type
           in: query
-          description: The feed type associated with the inventory task. Either <strong>feed_type</strong> or <strong>schedule_id</strong> is required. Do not use with the <strong>schedule_id</strong> parameter. Presently, only one feed type is available:<ul><li><code>LMS_ACTIVE_INVENTORY_REPORT</code></li></ul>
+          description: The feed type associated with the inventory tasks being retrieved. Presently, only one feed type is available:<br><ul><li><code>LMS_ACTIVE_INVENTORY_REPORT</code></li></ul>See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types" target="_blank">Report value feed types</a> for more information.
           required: false
           schema:
             type: string
         - name: schedule_id
           in: query
-          description: The ID of the schedule for which to retrieve the latest result file. This ID is generated when the schedule was created by the <strong>createSchedule</strong> method. Schedules apply to downloaded reports (<code>LMS_ACTIVE_INVENTORY_REPORT</code>). Either <strong>schedule_id</strong> or <strong>feed_type</strong> is  required. Do not use with the <strong>feed_type</strong> parameter.
+          description: <span class="tablenote"><b>Note:</b> Schedule functionality for ActiveInventoryReport is currently unavailable, so this field is not usable.</span>
           required: false
           schema:
             type: string
@@ -388,7 +388,7 @@ paths:
       parameters:
         - name: Content-Type
           in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -471,7 +471,7 @@ paths:
       parameters:
         - name: task_id
           in: path
-          description: The ID of the task. This ID was generated when the task was created by the <strong>createInventoryTask</strong> method
+          description: This path parameter is the unique identifier of the inventory task being retrieved.<br><br> Use the <a href="/api-docs/sell/feed/resources/inventory_task/methods/getInventoryTasks">getInventoryTasks</a> method to retrieve inventory task IDs.
           required: true
           schema:
             type: string
@@ -520,7 +520,7 @@ paths:
       parameters:
         - name: feed_type
           in: query
-          description: The <strong>feedType</strong> associated with the schedule.
+          description: The feed type associated with the schedules being retrieved.<br><br><span class="tablenote"><b>Note:</b> Schedules are currently only available for <code>LMS_ORDER_REPORT</code>.</span>
           required: true
           schema:
             type: string
@@ -594,7 +594,7 @@ paths:
       parameters:
         - name: Content-Type
           in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -698,7 +698,7 @@ paths:
       parameters:
         - name: schedule_id
           in: path
-          description: The ID of the schedule for which to retrieve the details. This ID is generated when the schedule was created by the <strong>createSchedule</strong> method.
+          description: This path parameter is the unique identifier of the schedule for which to retrieve details.<br><br> Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getSchedules" target="_blank ">getSchedules</a> method to retrieve schedule IDs.
           required: true
           schema:
             type: string
@@ -750,13 +750,13 @@ paths:
       parameters:
         - name: schedule_id
           in: path
-          description: The ID of the schedule to update. This ID is generated when the schedule was created by the <strong>createSchedule</strong> method.
+          description: This path parameter is the unique identifier of the schedule being updated. <br><br> Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getSchedules" target="_blank ">getSchedules</a> method to retrieve schedule IDs.
           required: true
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -834,7 +834,7 @@ paths:
       parameters:
         - name: schedule_id
           in: path
-          description: The <strong>schedule_id</strong> of the schedule to delete. This ID was generated when the task was created. If you do not know the schedule_id, use the <strong>getSchedules</strong> method to return all schedules based on a specified feed_type and find the schedule_id of the schedule to delete.
+          description: This path parameter is the unique identifier of the schedule being deleted.<br><br>Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getSchedules" target="_blank ">getSchedules</a> method to retrieve schedule IDs.
           required: true
           schema:
             type: string
@@ -870,12 +870,12 @@ paths:
     get:
       tags:
         - schedule
-      description: 'This method downloads the latest result file generated by the schedule. The response of this call is a compressed or uncompressed CSV, XML, or JSON file, with the applicable file extension (for example: csv.gz). Specify the <strong>schedule_id</strong> path parameter to download its last generated file.'
+      description: 'This method downloads the latest Order Report generated by the schedule. The response of this call is a compressed or uncompressed CSV, XML, or JSON file, with the applicable file extension (for example: csv.gz). Specify the <strong>schedule_id</strong> path parameter to download its last generated file.'
       operationId: getLatestResultFile
       parameters:
         - name: schedule_id
           in: path
-          description: The ID of the schedule for which to retrieve the latest result file. This ID is generated when the schedule was created by the <strong>createSchedule</strong> method.
+          description: This path parameter is the unique identifier of the schedule for which to retrieve the latest Order Report. <br><br> Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getSchedules" target="_blank ">getSchedules</a> method to retrieve schedule IDs.
           required: true
           schema:
             type: string
@@ -937,7 +937,7 @@ paths:
       parameters:
         - name: schedule_template_id
           in: path
-          description: The ID of the template to retrieve. If you do not know the <strong>schedule_template_id</strong>, refer to the documentation or use the <strong>getScheduleTemplates</strong> method to find the available schedule templates.
+          description: This path parameter is the unique identifier of the schedule template being retrieved.<br><br>Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getScheduleTemplates" target="_blank ">getScheduleTemplates</a> method to retrieve schedule template IDs.<br><br><span class="tablenote"><b>Note:</b> Template schedules are currently only available for <code>LMS_ORDER_REPORT</code>.</span>
           required: true
           schema:
             type: string
@@ -982,7 +982,7 @@ paths:
       parameters:
         - name: feed_type
           in: query
-          description: The feed type of the schedule templates to retrieve.
+          description: The feed type of the schedule templates to retrieve. <br><br><span class="tablenote"><b>Note:</b> Schedules are currently only available for <code>LMS_ORDER_REPORT</code>.</span>
           required: true
           schema:
             type: string
@@ -1044,7 +1044,7 @@ paths:
     get:
       tags:
         - task
-      description: 'This method returns the details and status for an array of tasks based on a specified <strong>feed_type</strong> or <strong>scheduledId</strong>. Specifying both <strong>feed_type</strong> and <strong>scheduledId</strong> results in an error. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.<br /><br />If specifying the <strong>feed_type</strong>, limit which tasks are returned by specifying filters, such as the creation date range or period of time using <strong>look_back_days</strong>. Also, by specifying the <strong>feed_type</strong>, both on-demand and scheduled reports are returned.<br /><br />If specifying a <strong>scheduledId</strong>, the schedule template (that the schedule ID is based on) determines which tasks are returned (see <strong>schedule_id</strong> for additional information). Each <strong>scheduledId</strong> applies to one <strong>feed_type</strong>. '
+      description: 'This method returns the details and status for an array of tasks based on a specified <strong>feed_type</strong> or <strong>schedule_id</strong>. Specifying both <strong>feed_type</strong> and <strong>schedule_id</strong> results in an error. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.<br /><br />If specifying the <strong>feed_type</strong>, limit which tasks are returned by specifying filters, such as the creation date range or period of time using <strong>look_back_days</strong>. Also, by specifying the <strong>feed_type</strong>, both on-demand and scheduled reports are returned.<br /><br />If specifying a <strong>schedule_id</strong>, the schedule template (that the schedule ID is based on) determines which tasks are returned (see <strong>schedule_id</strong> for additional information). Each <strong>scheduledId</strong> applies to one <strong>feed_type</strong>. '
       operationId: getTasks
       parameters:
         - name: date_range
@@ -1055,7 +1055,7 @@ paths:
             type: string
         - name: feed_type
           in: query
-          description: 'The feed type associated with the tasks to be returned. Only use a <strong>feedType</strong> that is available for your API: <ul><li>Order Feeds: <code>LMS_ORDER_ACK, LMS_ORDER_REPORT</code></li><li>Large Merchant Services (LMS) Feeds: See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">Available FeedTypes</a></li></ul><br/>Do not use with the <strong>schedule_id</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.'
+          description: 'The feed type associated with the tasks to be returned. Only use a <strong>feedType</strong> that is available for your API: <ul><li>Order Feeds: <code>LMS_ORDER_ACK, LMS_ORDER_REPORT</code></li><li>Inventory Upload Feed Types: See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">Available FeedTypes</a></li></ul>Do not use with the <strong>schedule_id</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.'
           required: false
           schema:
             type: string
@@ -1079,7 +1079,7 @@ paths:
             type: string
         - name: schedule_id
           in: query
-          description: The schedule ID associated with the task. A schedule periodically generates a report for the feed type specified by the schedule template (see <strong>scheduleTemplateId</strong> in <strong>createSchedule</strong>). Do not use with the <strong>feed_type</strong> parameter. Since schedules are based on feed types, you can specify a schedule (<strong>schedule_id</strong>) that returns the needed <strong>feed_type</strong>.
+          description: The unique identifier associated with the tasks being returned. A schedule periodically generates a report for the feed type specified by the schedule template.<br><br><span class="tablenote"><b>Note:</b> Schedules are currently only available for <code>LMS_ORDER_REPORT</code>.</span><br>Do not use with the <strong>feed_type</strong> parameter.
           required: false
           schema:
             type: string
@@ -1173,13 +1173,13 @@ paths:
       parameters:
         - name: X-EBAY-C-MARKETPLACE-ID
           in: header
-          description: The ID of the eBay marketplace where the item is hosted. <p> <span class="tablenote"><strong>Note:</strong> This value is case sensitive.</span></p><p>For example:</p><p><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code></p><p>This identifies the eBay marketplace that applies to this task. See <a href="/api-docs/sell/feed/types/bas:MarketplaceIdEnum">MarketplaceIdEnum</a>.</p>
+          description: The ID of the eBay marketplace where the item is hosted. <br><br>For example:<br><br><code>X-EBAY-C-MARKETPLACE-ID:EBAY_US</code><br><br>This identifies the eBay marketplace that applies to this task. See <a href="/api-docs/sell/feed/types/bas:MarketplaceIdEnum">MarketplaceIdEnum</a> for supported values.</p>
           required: true
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -1262,7 +1262,7 @@ paths:
       parameters:
         - name: task_id
           in: path
-          description: The task ID associated with the file to be downloaded.
+          description: This path parameter is the unique identifier of the task associated with the input file to be downloaded.<br><br>Use the <a href="/api-docs/sell/feed/resources/task/methods/getTasks" target="_blank ">getTasks</a> method to retrieve task IDs.
           required: true
           schema:
             type: string
@@ -1328,7 +1328,7 @@ paths:
       parameters:
         - name: task_id
           in: path
-          description: The ID of the task associated with the file you want to download. This ID was generated when the task was created.
+          description: This path parameter is the unique identifier of the task associated with the file to be downloaded. <br><br>Use the <a href="/api-docs/sell/feed/resources/task/methods/getTasks" target="_blank ">getTasks</a> method to retrieve task IDs.
           required: true
           schema:
             type: string
@@ -1390,7 +1390,7 @@ paths:
       parameters:
         - name: task_id
           in: path
-          description: The ID of the task. This ID was generated when the task was created.
+          description: This path parameter is the unique identifier of the task being retrieved.<br><br>Use the <a href="/api-docs/sell/feed/resources/task/methods/getTasks" target="_blank ">getTasks</a> method to retrieve task IDs.
           required: true
           schema:
             type: string
@@ -1438,21 +1438,21 @@ paths:
     post:
       tags:
         - task
-      description: This method associates the specified file with the specified task ID and uploads the input file. After the file has been uploaded, the processing of the file begins. <br /><br />Reports often take time to generate and it's common for this method to return an HTTP status of 202, which indicates the report is being generated. Use the <b> getTask</b> with the task ID or <b> getTasks</b> to determine the status of a report. <br /><br />The status flow is <code>QUEUED</code> &gt; <code>IN_PROCESS</code> &gt; <code>COMPLETED</code> or <code>COMPLETED_WITH_ERROR</code>. When the status is <code>COMPLETED</code> or <code>COMPLETED_WITH_ERROR</code>, this indicates the file has been processed and the order report can be downloaded. If there are errors, they will be indicated in the report file. <br /><br />For details of how this method is used in the upload flow, see <a href="/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html">Working with Order Feeds</a> in the Selling Integration Guide. <p><span class="tablenote"><strong>Note:</strong> This method applies to all Seller Hub feed types and LMS feed types except <code>LMS_ORDER_REPORT</code> and <code>LMS_ACTIVE_INVENTORY_REPORT</code>. See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">LMS feed types</a> and <a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl" target="_blank">Seller Hub feed types</a>.</span></p><p> <span class="tablenote"><b>Note:</b> You must use a <strong>Content-Type</strong> header with its value set to "<strong>multipart/form-data</strong>". See <a href="/api-docs/sell/feed/resources/task/methods/uploadFile#h2-samples">Samples</a> for information.</span></p>
+      description: 'This method associates the specified file with the specified task ID and uploads the input file. After the file has been uploaded, the processing of the file begins. <br><br>Reports often take time to generate and it''s common for this method to return an HTTP status of 202, which indicates the report is being generated. Use the <b> getTask</b> with the task ID or <b> getTasks</b> to determine the status of a report. <br><br>The status flow is <code>QUEUED</code> &gt; <code>IN_PROCESS</code> &gt; <code>COMPLETED</code> or <code>COMPLETED_WITH_ERROR</code>. When the status is <code>COMPLETED</code> or <code>COMPLETED_WITH_ERROR</code>, this indicates the file has been processed and the order report can be downloaded. If there are errors, they will be indicated in the report file. <br /><br />For details of how this method is used in the upload flow, see <a href="/api-docs/sell/static/orders/generating-and-retrieving-order-reports.html">Working with Order Feeds</a> in the Selling Integration Guide. <br><br>This call does not have a JSON Request payload but uploads the file as form-data. For example:<br /> <pre> fileName: &quot;AddFixedPriceItem_Macbook.xml&quot; <br /> name: &quot;file&quot; <br /> type: &quot;form-data&quot; <br /> file: @&quot;/C:/Users/.../AddFixedPriceItem_Macbook.7z&quot;</pre>See <a href="/api-docs/sell/feed/resources/task/methods/uploadFile#h2-samples">Samples</a> for information.<p><span class="tablenote"><strong>Note:</strong> This method applies to all <a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl" target="_blank">Seller Hub feed types</a>, and to all <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Availabl" target="_blank">LMS feed types</a> except <code>LMS_ORDER_REPORT</code> and <code>LMS_ACTIVE_INVENTORY_REPORT</code>.</span></p><p> <span class="tablenote"><b>Note:</b> You must use a <strong>Content-Type</strong> header with its value set to "<strong>multipart/form-data</strong>". See <a href="/api-docs/sell/feed/resources/task/methods/uploadFile#h2-samples">Samples</a> for information.</span></p><p><span class="tablenote"><b>Note:</b> For LMS feed types, upload a regular XML file or an XML file in zipped format (both formats are allowed).</span></p>'
       operationId: uploadFile
       parameters:
         - name: task_id
           in: path
-          description: The task_id associated with the file that will be uploaded. This ID was generated when the specified task was created.
+          description: This path parameter is the unique identifier of the task associated with the file that will be uploaded.<br><br>Use the <a href="/api-docs/sell/feed/resources/task/methods/getTasks" target="_blank ">getTasks</a> method to retrieve task IDs.
           required: true
           schema:
             type: string
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FormDataContentDisposition'
-        required: false
+        - name: Content-Type
+          in: header
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>multipart/form-data</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -1530,7 +1530,7 @@ paths:
             type: string
         - name: feed_type
           in: query
-          description: The feed type associated with the task. The only presently supported value is <code>CUSTOMER_SERVICE_METRICS_REPORT</code>.
+          description: The feed type associated with the tasks being retrieved. The only presently supported value is <code>CUSTOMER_SERVICE_METRICS_REPORT</code>.
           required: false
           schema:
             type: string
@@ -1624,13 +1624,13 @@ paths:
       parameters:
         - name: Accept-Language
           in: header
-          description: Use this header to specify the natural language in which the authenticated user desires the response. For example, <code>en_US</code> for English or <code>de_DE</code> for German.
+          description: Use this header to specify the natural language in which the authenticated user desires the response. For example, <code>en-US</code> for English or <code>de-DE</code> for German.
           required: true
           schema:
             type: string
         - name: Content-Type
           in: header
-          description: This header indicates the format of the request body provided by the client. It's value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
+          description: This header indicates the format of the request body provided by the client. Its value should be set to <b>application/json</b>. <br><br> For more information, refer to <a href="/api-docs/static/rest-request-components.html#HTTP" target="_blank ">HTTP request headers</a>.
           required: true
           schema:
             type: string
@@ -1719,7 +1719,7 @@ paths:
       parameters:
         - name: task_id
           in: path
-          description: Use this path parameter to specify the task ID value for the customer service metric task to retrieve.
+          description: This path parameter is the unique identifier of the customer service metric task being retrieved.<br><br>Use the <a href="/api-docs/sell/feed/resources/customer_service_metric_task/methods/getCustomerServiceMetricTasks">getCustomerServiceMetricTasks</a> method to retrieve task IDs.
           required: true
           schema:
             type: string
@@ -1762,21 +1762,21 @@ components:
     CreateInventoryTaskRequest:
       type: object
       properties:
-        schemaVersion:
-          type: string
-          description: The schemaVersion/version number of the file format (use the schema version of the API to which you are programming):<ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version" target="_blank">Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
         feedType:
           type: string
-          description: The feed type associated with the inventory task you are about to create. Use a <strong>feedType</strong> that is available for your API. Presently, only one feed type is available:<ul><li><code>LMS_ACTIVE_INVENTORY_REPORT</code></li></ul><br/>See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types" target="_blank">Report download feed types</a> for more information.
+          description: The feed type associated with the inventory task you are about to create. Presently, only one feed type is available:<br><ul><li><code>LMS_ACTIVE_INVENTORY_REPORT</code></li></ul>See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types" target="_blank">Report download feed types</a> for more information.
         filterCriteria:
-          description: The container for the filter fields. This container is used to set the filter criteria for the ActiveInventoryReport. A seller can retrieve listings for a specified format.
+          description: This container allows a seller to create an ActiveInventoryReport for a single listing format.
           $ref: '#/components/schemas/InventoryFilterCriteria'
+        schemaVersion:
+          type: string
+          description: The version number of the inventory task to use for the <b>feedType</b>.<br><br><span class="tablenote"><b>Note:</b> This field <b>must</b> have a value of <code>1.0</code>.</span>
     CreateOrderTaskRequest:
       type: object
       properties:
         feedType:
           type: string
-          description: The feed type associated with the task. The only presently supported value is <code>LMS_ORDER_REPORT</code>. See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types" target="_blank">Report download feed types</a> for more information.
+          description: The feed type associated with the task. The only presently supported value is <code>LMS_ORDER_REPORT</code>.<br><br>See <a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-reports-download-feed-types" target="_blank">Report download feed types</a> for more information.
         filterCriteria:
           description: The container for the filter fields. This container is used to set the filter criteria for the order report. A seller can set date range filters and/or can retrieve orders in a specific state.
           $ref: '#/components/schemas/OrderFilterCriteria'
@@ -1789,30 +1789,30 @@ components:
       properties:
         feedType:
           type: string
-          description: The <strong>feedType</strong> specified for the task. The report lists the transaction details that contribute to the service metrics evaluation. Supported types include:<p><code>CUSTOMER_SERVICE_METRICS_REPORT</code></p>
+          description: The <strong>feedType</strong> specified for the customer service metric task being created. The report lists the transaction details that contribute to the service metrics evaluation. Supported types include:<p><code>CUSTOMER_SERVICE_METRICS_REPORT</code></p>
         filterCriteria:
           description: This container is used to customize and set criteria for Customer Service Metric report that will be associated with the task.
           $ref: '#/components/schemas/CustomerServiceMetricsFilterCriteria'
         schemaVersion:
           type: string
-          description: 'The version number of the file format. <p><b>Valid value: </b><code>1.0</code><p>'
+          description: The version number of the customer service metric.<br><br><span class="tablenote"><b>Note:</b> This field <b>must</b> have a value of <code>1.0</code>.</span>
       description: The type that defines the fields for the Customer Service Metric reports generated with the Feed API.
     CreateTaskRequest:
       type: object
       properties:
         feedType:
           type: string
-          description: The feed type associated with the task. Only use a <strong>feedType</strong> that is available for your API. Available feed types:<ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#trading-upload-feed-types" target="_blank">Inventory upload feed types</a></li><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-upload-feed-types" target="_blank">Fulfillment upload feed types</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl" target="_blank">Seller Hub feed types</a></li></ul>
+          description: The feed type associated with the task. Available feed types:<br><ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#trading-upload-feed-types" target="_blank">Inventory upload feed types</a></li><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#merchant-data-upload-feed-types" target="_blank">Fulfillment upload feed types</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#availabl" target="_blank">Seller Hub feed types</a></li></ul>
         schemaVersion:
           type: string
-          description: The schemaVersion/version number of the file format (use the schema version of the API to which you are programming):<ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version" target="_blank">Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
+          description: The schemaVersion/version number of the file format:<br><ul><li><a href="/api-docs/sell/static/feed/lms-feeds-quick-reference.html#Version" target="_blank">Version Details / Schema Version</a></li><li><a href="/api-docs/sell/static/feed/fx-feeds-quick-reference.html#schema" target="_blank">Seller Hub feed schema version</a></li></ul>
       description: The type that defines the fields for the <b> createTask</b> method.
     CreateUserScheduleRequest:
       type: object
       properties:
         feedType:
           type: string
-          description: The name of the feed type for the created schedule. Match the <strong>feed_type</strong> from the schedule template associated with this schedule.
+          description: The name of the feed type for the created schedule.<br><br> Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getScheduleTemplates">getScheduleTemplates</a> method to retrieve the feed type of a schedule template.<br><br><span class="tablenote"><b>Note:</b> Schedules are currently only available for <code>LMS_ORDER_REPORT</code>.</span>
         preferredTriggerDayOfMonth:
           type: integer
           description: 'The preferred day of the month to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for monthly schedules. The last day of the month is used for numbers larger than the actual number of days in the month. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value.<br /><br /><b>Minimum: </b>1<br /><br /><b>Maximum: </b>31'
@@ -1831,13 +1831,13 @@ components:
           description: The schedule name assigned by the user for the created schedule.
         scheduleStartDate:
           type: string
-          description: The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the <strong>scheduleEndDate</strong> occurs or the <strong>scheduleTemplateId</strong> becomes inactive. <br /><br />Use this field, if available, to start the schedule in the future but before the <strong>scheduleEndDate</strong> (if supplied). This field is available as specified by the template <strong>(scheduleTemplateId)</strong>.  The template can specify this field as optional or required, and optionally provides a default value.<br /><br /><b>Format:</b> UTC <code>yyyy-MM-dd<strong>T</strong>HH<strong>Z</strong></code><br /><br />For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:<br /><code> 2020-01-01T12Z</code>
+          description: The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the <strong>scheduleEndDate</strong> occurs or the <strong>scheduleTemplateId</strong> becomes inactive. <br /><br />Use this field, if available, to start the schedule in the future but before the <strong>scheduleEndDate</strong> (if supplied). This field is available as specified by the template <strong>(scheduleTemplateId)</strong>. The template can specify this field as optional or required, and optionally provides a default value.<br /><br /><b>Format:</b> UTC <code>yyyy-MM-dd<strong>T</strong>HH<strong>Z</strong></code><br /><br />For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:<br /><code> 2020-01-01T12Z</code>
         scheduleTemplateId:
           type: string
-          description: The ID of the template associated with the schedule ID. You can get this ID from the documentation or by calling the <strong>getScheduleTemplates</strong> method. This method requires a schedule template ID that is <code>ACTIVE</code>.
+          description: The unique identifier of the template to be used for this schedule. <br><br>Use the <a href="/api-docs/sell/feed/resources/schedule/methods/getScheduleTemplates">getScheduleTemplates</a> method to retrieve the schedule template ID. This method requires a schedule template ID that is <code>ACTIVE</code>.<br><br><span class="tablenote"><b>Note:</b> Schedules are currently only available for <code>LMS_ORDER_REPORT</code>.</span>
         schemaVersion:
           type: string
-          description: The schema version of the schedule feedType. This field is required if the <strong>feedType</strong> has a schema version.<br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value.
+          description: The schema version of a schedule.
       description: The type that defines the fields for the <strong>createSchedule</strong> method.
     CustomerServiceMetricTaskCollection:
       type: object
@@ -1873,10 +1873,10 @@ components:
       properties:
         customerServiceMetricType:
           type: string
-          description: An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance. See <strong>CustomerServiceMetricTypeEnum</strong> for values. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum'>eBay API documentation</a>
+          description: An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.<br><br>See <a href="/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum">CustomerServiceMetricTypeEnum</a> for values. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/api:CustomerServiceMetricTypeEnum'>eBay API documentation</a>
         evaluationMarketplaceId:
           type: string
-          description: An enumeration value that specifies the eBay marketplace where the evaluation occurs. See <strong>MarketplaceIdEnum</strong> for values. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/bas:MarketplaceIdEnum'>eBay API documentation</a>
+          description: An enumeration value that specifies the eBay marketplace where the evaluation occurs.<br><br>See <a href="/api-docs/sell/feed/types/bas:MarketplaceIdEnum">MarketplaceIdEnum</a> for values. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/bas:MarketplaceIdEnum'>eBay API documentation</a>
         listingCategories:
           type: array
           description: 'A list of listing category IDs on which the service metric is measured. A seller can use one or more L1 (top-level) eBay categories to get metrics specific to those L1 categories. The Category IDs for each L1 category are required. Category ID values for L1 categories can be retrieved using the Taxonomy API.<p> <span class="tablenote"><strong>Note: </strong>Pass this attribute to narrow down your filter results for the <code>ITEM_NOT_AS_DESCRIBED</code> customerServiceMetricType.</span></p> <p>Supported categories include:</p><p><code>primary(L1) category Id</code></p>'
@@ -1946,48 +1946,13 @@ components:
         value:
           type: string
           description: The value of the object.
-    FormDataContentDisposition:
-      type: object
-      properties:
-        creationDate:
-          type: string
-          description: 'The file creation date. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 8, 2019</p><p><code>2019-09-08T00:00:00.000Z</code></p>'
-        fileName:
-          type: string
-          description: The name of the file including its extension (for example, xml or csv) to be uploaded.
-        modificationDate:
-          type: string
-          description: 'The file modified date. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 9, 2019</p><p><code>2019-09-09T00:00:00.000Z</code></p>'
-        name:
-          type: string
-          description: A content identifier. The only presently supported name is <code>file</code>.
-        parameters:
-          type: object
-          additionalProperties:
-            type: string
-          description: The parameters you want associated with the file.
-        readDate:
-          type: string
-          description: 'The date you read the file. <br /><br /><b> Format: </b> UTC <code>yyyy-MM-ddThh:mm:ss.SSSZ</code><p><b>For example:</b><p>Created on September 10, 2019</p><p><code>2019-09-10T00:00:00.000Z</code></p>'
-        size:
-          type: integer
-          description: The size of the file.
-          format: int32
-        type:
-          type: string
-          description: The file type. The only presently supported type is <code>form-data</code>.
-        file:
-          type: string
-          format: binary
-          description: The file to upload.
-      description: The metadata for the file.
     InventoryFilterCriteria:
       type: object
       properties:
         listingFormat:
           type: string
-          description: The type of buying option for the order. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/api:ListingFormatEnum'>eBay API documentation</a>
-      description: The container for the filter fields. This container is used to set the filter criteria for the order report. A seller can retrieve listings for a specified format.
+          description: The listing format for the ActiveInventoryReport being created. Supported types are:<br><ul><li><code>AUCTION</code></li><li><code>FIXED_PRICE</code></li></ul> For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/api:ListingFormatEnum'>eBay API documentation</a>
+      description: This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format.
     InventoryTask:
       type: object
       properties:
@@ -2203,8 +2168,7 @@ components:
           type: string
           description: The unique eBay-assigned ID of the task.
     StreamingOutput:
-      type: string
-      format: binary
+      type: object
       description: File stream
     SupportedConfiguration:
       type: object
@@ -2289,7 +2253,7 @@ components:
           description: The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/feed/types/api:DayOfWeekEnum'>eBay API documentation</a>
         preferredTriggerHour:
           type: string
-          description: 'The preferred two-digit hour of the day to trigger the schedule. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value. <br /><br /><b>Format:</b> UTC <code>hhZ</code><br /><br />For example, the following represents 11:00 am UTC:<code> 11Z</code><br /><br /><b>Minimum: </b><code>00Z</code><b><br /><br /><b>Maximum: </b><code>23Z</code>'
+          description: 'The preferred two-digit hour of the day to trigger the schedule. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value. <br /><br /><b>Format:</b> UTC <code>hhZ</code><br /><br />For example, the following represents 11:00 am UTC:<code> 11Z</code><br /><br /><b>Minimum: </b><code>00Z</code><br /><br /><b>Maximum:</b> <code>23Z</code>'
         scheduleEndDate:
           type: string
           description: The timestamp on which the schedule (report generation) ends. After this date, the schedule status becomes <code>INACTIVE</code>. <br /><br />Use this field, if available, to end the schedule in the future. This value must be later than <strong>scheduleStartDate</strong> (if supplied). This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value.<br /><br /><b>Format:</b> UTC <code>yyyy-MM-dd<strong>T</strong>HH<strong>Z</strong></code><br /><br />For example, the following represents UTC October 10, 2021 at 10:00 AM:<br /><code> 2021-10-10T10Z</code>
@@ -2301,7 +2265,7 @@ components:
           description: The timestamp to start generating the report. After this timestamp, the schedule status becomes active until either the <strong>scheduleEndDate</strong> occurs or the <strong>scheduleTemplateId</strong> becomes inactive. <br /><br />Use this field, if available, to start the schedule in the future but before the <strong>scheduleEndDate</strong> (if supplied). This field is available as specified by the template <strong>(scheduleTemplateId)</strong>.  The template can specify this field as optional or required, and optionally provides a default value.<br /><br /><b>Format:</b> UTC <code>yyyy-MM-dd<strong>T</strong>HH<strong>Z</strong></code><br /><br />For example, the following represents a schedule start date of UTC October 01, 2020 at 12:00 PM:<br /><code> 2020-01-01T12Z</code>
         schemaVersion:
           type: string
-          description: The schema version of the feedType for the schedule. This field is required if the <strong>feedType</strong> has a schema version. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required, and optionally provides a default value.
+          description: The schema version of a schedule.
       description: The type that defines the fields for a schedule update to a schedule generated with the Feed API.
     UploadSummary:
       type: object
