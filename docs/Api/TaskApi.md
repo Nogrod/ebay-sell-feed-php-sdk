@@ -326,7 +326,7 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file): object
+uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file)
 ```
 
 
@@ -362,8 +362,7 @@ $type = 'type_example'; // string | The file type. The only presently supported 
 $file = "/path/to/file.txt"; // \SplFileObject | The file to upload.
 
 try {
-    $result = $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file);
-    print_r($result);
+    $apiInstance->uploadFile($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->uploadFile: ', $e->getMessage(), PHP_EOL;
 }
@@ -386,7 +385,7 @@ try {
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
@@ -395,7 +394,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `multipart/form-data`
-- **Accept**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
