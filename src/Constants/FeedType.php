@@ -4,6 +4,7 @@ namespace eBay\Sell\Feed\Constants;
 
 /**
  * https://developer.ebay.com/api-docs/sell/static/lms-migration/lms-to-feed-feedtype.html
+ * https://developer.ebay.com/api-docs/sell/static/feed/lms-feeds-quick-reference.html
  */
 class FeedType
 {

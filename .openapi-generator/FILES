@@ -37,12 +37,12 @@ docs/Model/UserScheduleCollection.md
 docs/Model/UserScheduleResponse.md
 git_push.sh
 phpunit.xml.dist
-src/ApiException.php
 src/Api/CustomerServiceMetricTaskApi.php
 src/Api/InventoryTaskApi.php
 src/Api/OrderTaskApi.php
 src/Api/ScheduleApi.php
 src/Api/TaskApi.php
+src/ApiException.php
 src/Configuration.php
 src/HeaderSelector.php
 src/Model/CreateInventoryTaskRequest.php
