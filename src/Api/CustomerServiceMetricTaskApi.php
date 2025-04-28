@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CustomerServiceMetricTaskApi
  * PHP version 8.1
@@ -143,8 +144,7 @@ class CustomerServiceMetricTaskApi
         string $accept_language,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
-    ): void
-    {
+    ): void {
         $this->createCustomerServiceMetricTaskWithHttpInfo($accept_language, $create_service_metrics_task_request, $contentType);
     }
 
@@ -163,8 +163,7 @@ class CustomerServiceMetricTaskApi
         string $accept_language,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createCustomerServiceMetricTaskRequest($accept_language, $create_service_metrics_task_request, $contentType);
 
         try {
@@ -213,8 +212,7 @@ class CustomerServiceMetricTaskApi
         string $accept_language,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createCustomerServiceMetricTaskAsyncWithHttpInfo($accept_language, $create_service_metrics_task_request, $contentType)
             ->then(
                 function ($response) {
@@ -237,8 +235,7 @@ class CustomerServiceMetricTaskApi
         string $accept_language,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->createCustomerServiceMetricTaskRequest($accept_language, $create_service_metrics_task_request, $contentType);
 
@@ -279,8 +276,7 @@ class CustomerServiceMetricTaskApi
         string $accept_language,
         \eBay\Sell\Feed\Model\CreateServiceMetricsTaskRequest $create_service_metrics_task_request,
         string $contentType = self::contentTypes['createCustomerServiceMetricTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'accept_language' is set
         if ($accept_language === null || (is_array($accept_language) && count($accept_language) === 0)) {
@@ -389,8 +385,7 @@ class CustomerServiceMetricTaskApi
     public function getCustomerServiceMetricTask(
         string $task_id,
         string $contentType = self::contentTypes['getCustomerServiceMetricTask'][0]
-    ): \eBay\Sell\Feed\Model\ServiceMetricsTask
-    {
+    ): \eBay\Sell\Feed\Model\ServiceMetricsTask {
         list($response) = $this->getCustomerServiceMetricTaskWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -408,8 +403,7 @@ class CustomerServiceMetricTaskApi
     public function getCustomerServiceMetricTaskWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getCustomerServiceMetricTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getCustomerServiceMetricTaskRequest($task_id, $contentType);
 
         try {
@@ -435,9 +429,9 @@ class CustomerServiceMetricTaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\ServiceMetricsTask', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\ServiceMetricsTask', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -479,7 +473,7 @@ class CustomerServiceMetricTaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\ServiceMetricsTask';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -533,8 +527,7 @@ class CustomerServiceMetricTaskApi
     public function getCustomerServiceMetricTaskAsync(
         string $task_id,
         string $contentType = self::contentTypes['getCustomerServiceMetricTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getCustomerServiceMetricTaskAsyncWithHttpInfo($task_id, $contentType)
             ->then(
                 function ($response) {
@@ -555,8 +548,7 @@ class CustomerServiceMetricTaskApi
     public function getCustomerServiceMetricTaskAsyncWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getCustomerServiceMetricTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\ServiceMetricsTask';
         $request = $this->getCustomerServiceMetricTaskRequest($task_id, $contentType);
 
@@ -564,7 +556,7 @@ class CustomerServiceMetricTaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -608,8 +600,7 @@ class CustomerServiceMetricTaskApi
     public function getCustomerServiceMetricTaskRequest(
         string $task_id,
         string $contentType = self::contentTypes['getCustomerServiceMetricTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -716,8 +707,7 @@ class CustomerServiceMetricTaskApi
         ?string $look_back_days = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getCustomerServiceMetricTasks'][0]
-    ): \eBay\Sell\Feed\Model\CustomerServiceMetricTaskCollection
-    {
+    ): \eBay\Sell\Feed\Model\CustomerServiceMetricTaskCollection {
         list($response) = $this->getCustomerServiceMetricTasksWithHttpInfo($date_range, $feed_type, $limit, $look_back_days, $offset, $contentType);
         return $response;
     }
@@ -743,8 +733,7 @@ class CustomerServiceMetricTaskApi
         ?string $look_back_days = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getCustomerServiceMetricTasks'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getCustomerServiceMetricTasksRequest($date_range, $feed_type, $limit, $look_back_days, $offset, $contentType);
 
         try {
@@ -770,9 +759,9 @@ class CustomerServiceMetricTaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\CustomerServiceMetricTaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\CustomerServiceMetricTaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -814,7 +803,7 @@ class CustomerServiceMetricTaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\CustomerServiceMetricTaskCollection';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -876,8 +865,7 @@ class CustomerServiceMetricTaskApi
         ?string $look_back_days = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getCustomerServiceMetricTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getCustomerServiceMetricTasksAsyncWithHttpInfo($date_range, $feed_type, $limit, $look_back_days, $offset, $contentType)
             ->then(
                 function ($response) {
@@ -906,8 +894,7 @@ class CustomerServiceMetricTaskApi
         ?string $look_back_days = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getCustomerServiceMetricTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\CustomerServiceMetricTaskCollection';
         $request = $this->getCustomerServiceMetricTasksRequest($date_range, $feed_type, $limit, $look_back_days, $offset, $contentType);
 
@@ -915,7 +902,7 @@ class CustomerServiceMetricTaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -967,8 +954,7 @@ class CustomerServiceMetricTaskApi
         ?string $look_back_days = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getCustomerServiceMetricTasks'][0]
-    ): Request
-    {
+    ): Request {
 
 
 

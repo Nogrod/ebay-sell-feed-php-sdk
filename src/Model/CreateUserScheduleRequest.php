@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CreateUserScheduleRequest
  *
@@ -650,7 +651,7 @@ class CreateUserScheduleRequest implements ModelInterface, ArrayAccess, JsonSeri
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

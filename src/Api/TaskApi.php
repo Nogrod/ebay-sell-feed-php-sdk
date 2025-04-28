@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TaskApi
  * PHP version 8.1
@@ -152,8 +153,7 @@ class TaskApi
         string $x_ebay_c_marketplace_id,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
-    ): void
-    {
+    ): void {
         $this->createTaskWithHttpInfo($x_ebay_c_marketplace_id, $create_task_request, $contentType);
     }
 
@@ -172,8 +172,7 @@ class TaskApi
         string $x_ebay_c_marketplace_id,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createTaskRequest($x_ebay_c_marketplace_id, $create_task_request, $contentType);
 
         try {
@@ -222,8 +221,7 @@ class TaskApi
         string $x_ebay_c_marketplace_id,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createTaskAsyncWithHttpInfo($x_ebay_c_marketplace_id, $create_task_request, $contentType)
             ->then(
                 function ($response) {
@@ -246,8 +244,7 @@ class TaskApi
         string $x_ebay_c_marketplace_id,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->createTaskRequest($x_ebay_c_marketplace_id, $create_task_request, $contentType);
 
@@ -288,8 +285,7 @@ class TaskApi
         string $x_ebay_c_marketplace_id,
         \eBay\Sell\Feed\Model\CreateTaskRequest $create_task_request,
         string $contentType = self::contentTypes['createTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'x_ebay_c_marketplace_id' is set
         if ($x_ebay_c_marketplace_id === null || (is_array($x_ebay_c_marketplace_id) && count($x_ebay_c_marketplace_id) === 0)) {
@@ -398,8 +394,7 @@ class TaskApi
     public function getInputFile(
         string $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
-    ): \SplFileObject
-    {
+    ): \SplFileObject {
         list($response) = $this->getInputFileWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -417,8 +412,7 @@ class TaskApi
     public function getInputFileWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getInputFileRequest($task_id, $contentType);
 
         try {
@@ -444,9 +438,9 @@ class TaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\SplFileObject', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SplFileObject', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -488,7 +482,7 @@ class TaskApi
             }
 
             $returnType = '\SplFileObject';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -542,8 +536,7 @@ class TaskApi
     public function getInputFileAsync(
         string $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getInputFileAsyncWithHttpInfo($task_id, $contentType)
             ->then(
                 function ($response) {
@@ -564,8 +557,7 @@ class TaskApi
     public function getInputFileAsyncWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\SplFileObject';
         $request = $this->getInputFileRequest($task_id, $contentType);
 
@@ -573,7 +565,7 @@ class TaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -617,8 +609,7 @@ class TaskApi
     public function getInputFileRequest(
         string $task_id,
         string $contentType = self::contentTypes['getInputFile'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -717,8 +708,7 @@ class TaskApi
     public function getResultFile(
         string $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
-    ): \SplFileObject
-    {
+    ): \SplFileObject {
         list($response) = $this->getResultFileWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -736,8 +726,7 @@ class TaskApi
     public function getResultFileWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getResultFileRequest($task_id, $contentType);
 
         try {
@@ -763,9 +752,9 @@ class TaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\SplFileObject', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SplFileObject', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -807,7 +796,7 @@ class TaskApi
             }
 
             $returnType = '\SplFileObject';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -861,8 +850,7 @@ class TaskApi
     public function getResultFileAsync(
         string $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getResultFileAsyncWithHttpInfo($task_id, $contentType)
             ->then(
                 function ($response) {
@@ -883,8 +871,7 @@ class TaskApi
     public function getResultFileAsyncWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\SplFileObject';
         $request = $this->getResultFileRequest($task_id, $contentType);
 
@@ -892,7 +879,7 @@ class TaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -936,8 +923,7 @@ class TaskApi
     public function getResultFileRequest(
         string $task_id,
         string $contentType = self::contentTypes['getResultFile'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -1036,8 +1022,7 @@ class TaskApi
     public function getTask(
         string $task_id,
         string $contentType = self::contentTypes['getTask'][0]
-    ): \eBay\Sell\Feed\Model\Task
-    {
+    ): \eBay\Sell\Feed\Model\Task {
         list($response) = $this->getTaskWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -1055,8 +1040,7 @@ class TaskApi
     public function getTaskWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getTaskRequest($task_id, $contentType);
 
         try {
@@ -1082,9 +1066,9 @@ class TaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\Task', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\Task', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1126,7 +1110,7 @@ class TaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\Task';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1180,8 +1164,7 @@ class TaskApi
     public function getTaskAsync(
         string $task_id,
         string $contentType = self::contentTypes['getTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getTaskAsyncWithHttpInfo($task_id, $contentType)
             ->then(
                 function ($response) {
@@ -1202,8 +1185,7 @@ class TaskApi
     public function getTaskAsyncWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\Task';
         $request = $this->getTaskRequest($task_id, $contentType);
 
@@ -1211,7 +1193,7 @@ class TaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1255,8 +1237,7 @@ class TaskApi
     public function getTaskRequest(
         string $task_id,
         string $contentType = self::contentTypes['getTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -1365,8 +1346,7 @@ class TaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getTasks'][0]
-    ): \eBay\Sell\Feed\Model\TaskCollection
-    {
+    ): \eBay\Sell\Feed\Model\TaskCollection {
         list($response) = $this->getTasksWithHttpInfo($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType);
         return $response;
     }
@@ -1394,8 +1374,7 @@ class TaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getTasks'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getTasksRequest($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType);
 
         try {
@@ -1421,9 +1400,9 @@ class TaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\TaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\TaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1465,7 +1444,7 @@ class TaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\TaskCollection';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1529,8 +1508,7 @@ class TaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getTasksAsyncWithHttpInfo($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType)
             ->then(
                 function ($response) {
@@ -1561,8 +1539,7 @@ class TaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\TaskCollection';
         $request = $this->getTasksRequest($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType);
 
@@ -1570,7 +1547,7 @@ class TaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1624,8 +1601,7 @@ class TaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getTasks'][0]
-    ): Request
-    {
+    ): Request {
 
 
 
@@ -1787,8 +1763,7 @@ class TaskApi
         ?string $type = null,
         ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
-    ): void
-    {
+    ): void {
         $this->uploadFileWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType);
     }
 
@@ -1823,8 +1798,7 @@ class TaskApi
         ?string $type = null,
         ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
-    ): array
-    {
+    ): array {
         $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType);
 
         try {
@@ -1889,8 +1863,7 @@ class TaskApi
         ?string $type = null,
         ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->uploadFileAsyncWithHttpInfo($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType)
             ->then(
                 function ($response) {
@@ -1929,8 +1902,7 @@ class TaskApi
         ?string $type = null,
         ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->uploadFileRequest($task_id, $creation_date, $file_name, $modification_date, $name, $parameters, $read_date, $size, $type, $file, $contentType);
 
@@ -1987,8 +1959,7 @@ class TaskApi
         ?string $type = null,
         ?\SplFileObject $file = null,
         string $contentType = self::contentTypes['uploadFile'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {

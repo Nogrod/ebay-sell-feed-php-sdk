@@ -1,4 +1,5 @@
 <?php
+
 /**
  * OrderTaskApi
  * PHP version 8.1
@@ -141,8 +142,7 @@ class OrderTaskApi
     public function createOrderTask(
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
-    ): void
-    {
+    ): void {
         $this->createOrderTaskWithHttpInfo($create_order_task_request, $contentType);
     }
 
@@ -159,8 +159,7 @@ class OrderTaskApi
     public function createOrderTaskWithHttpInfo(
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createOrderTaskRequest($create_order_task_request, $contentType);
 
         try {
@@ -207,8 +206,7 @@ class OrderTaskApi
     public function createOrderTaskAsync(
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createOrderTaskAsyncWithHttpInfo($create_order_task_request, $contentType)
             ->then(
                 function ($response) {
@@ -229,8 +227,7 @@ class OrderTaskApi
     public function createOrderTaskAsyncWithHttpInfo(
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->createOrderTaskRequest($create_order_task_request, $contentType);
 
@@ -269,8 +266,7 @@ class OrderTaskApi
     public function createOrderTaskRequest(
         \eBay\Sell\Feed\Model\CreateOrderTaskRequest $create_order_task_request,
         string $contentType = self::contentTypes['createOrderTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'create_order_task_request' is set
         if ($create_order_task_request === null || (is_array($create_order_task_request) && count($create_order_task_request) === 0)) {
@@ -368,8 +364,7 @@ class OrderTaskApi
     public function getOrderTask(
         string $task_id,
         string $contentType = self::contentTypes['getOrderTask'][0]
-    ): \eBay\Sell\Feed\Model\OrderTask
-    {
+    ): \eBay\Sell\Feed\Model\OrderTask {
         list($response) = $this->getOrderTaskWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -387,8 +382,7 @@ class OrderTaskApi
     public function getOrderTaskWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getOrderTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getOrderTaskRequest($task_id, $contentType);
 
         try {
@@ -414,9 +408,9 @@ class OrderTaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\OrderTask', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\OrderTask', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -458,7 +452,7 @@ class OrderTaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\OrderTask';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -512,8 +506,7 @@ class OrderTaskApi
     public function getOrderTaskAsync(
         string $task_id,
         string $contentType = self::contentTypes['getOrderTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getOrderTaskAsyncWithHttpInfo($task_id, $contentType)
             ->then(
                 function ($response) {
@@ -534,8 +527,7 @@ class OrderTaskApi
     public function getOrderTaskAsyncWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getOrderTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\OrderTask';
         $request = $this->getOrderTaskRequest($task_id, $contentType);
 
@@ -543,7 +535,7 @@ class OrderTaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -587,8 +579,7 @@ class OrderTaskApi
     public function getOrderTaskRequest(
         string $task_id,
         string $contentType = self::contentTypes['getOrderTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -697,8 +688,7 @@ class OrderTaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getOrderTasks'][0]
-    ): \eBay\Sell\Feed\Model\OrderTaskCollection
-    {
+    ): \eBay\Sell\Feed\Model\OrderTaskCollection {
         list($response) = $this->getOrderTasksWithHttpInfo($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType);
         return $response;
     }
@@ -726,8 +716,7 @@ class OrderTaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getOrderTasks'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getOrderTasksRequest($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType);
 
         try {
@@ -753,9 +742,9 @@ class OrderTaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\OrderTaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\OrderTaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -797,7 +786,7 @@ class OrderTaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\OrderTaskCollection';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -861,8 +850,7 @@ class OrderTaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getOrderTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getOrderTasksAsyncWithHttpInfo($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType)
             ->then(
                 function ($response) {
@@ -893,8 +881,7 @@ class OrderTaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getOrderTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\OrderTaskCollection';
         $request = $this->getOrderTasksRequest($date_range, $feed_type, $limit, $look_back_days, $offset, $schedule_id, $contentType);
 
@@ -902,7 +889,7 @@ class OrderTaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -956,8 +943,7 @@ class OrderTaskApi
         ?string $offset = null,
         ?string $schedule_id = null,
         string $contentType = self::contentTypes['getOrderTasks'][0]
-    ): Request
-    {
+    ): Request {
 
 
 

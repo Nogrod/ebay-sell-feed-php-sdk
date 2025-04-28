@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CustomerServiceMetricsFilterCriteria
  *
@@ -480,7 +481,7 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     #[ReturnTypeWillChange]
     public function jsonSerialize(): mixed
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

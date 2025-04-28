@@ -1,4 +1,5 @@
 <?php
+
 /**
  * InventoryTaskApi
  * PHP version 8.1
@@ -141,8 +142,7 @@ class InventoryTaskApi
     public function createInventoryTask(
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
-    ): void
-    {
+    ): void {
         $this->createInventoryTaskWithHttpInfo($create_inventory_task_request, $contentType);
     }
 
@@ -159,8 +159,7 @@ class InventoryTaskApi
     public function createInventoryTaskWithHttpInfo(
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createInventoryTaskRequest($create_inventory_task_request, $contentType);
 
         try {
@@ -207,8 +206,7 @@ class InventoryTaskApi
     public function createInventoryTaskAsync(
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createInventoryTaskAsyncWithHttpInfo($create_inventory_task_request, $contentType)
             ->then(
                 function ($response) {
@@ -229,8 +227,7 @@ class InventoryTaskApi
     public function createInventoryTaskAsyncWithHttpInfo(
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->createInventoryTaskRequest($create_inventory_task_request, $contentType);
 
@@ -269,8 +266,7 @@ class InventoryTaskApi
     public function createInventoryTaskRequest(
         \eBay\Sell\Feed\Model\CreateInventoryTaskRequest $create_inventory_task_request,
         string $contentType = self::contentTypes['createInventoryTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'create_inventory_task_request' is set
         if ($create_inventory_task_request === null || (is_array($create_inventory_task_request) && count($create_inventory_task_request) === 0)) {
@@ -368,8 +364,7 @@ class InventoryTaskApi
     public function getInventoryTask(
         string $task_id,
         string $contentType = self::contentTypes['getInventoryTask'][0]
-    ): \eBay\Sell\Feed\Model\InventoryTask
-    {
+    ): \eBay\Sell\Feed\Model\InventoryTask {
         list($response) = $this->getInventoryTaskWithHttpInfo($task_id, $contentType);
         return $response;
     }
@@ -387,8 +382,7 @@ class InventoryTaskApi
     public function getInventoryTaskWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getInventoryTask'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getInventoryTaskRequest($task_id, $contentType);
 
         try {
@@ -414,9 +408,9 @@ class InventoryTaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\InventoryTask', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\InventoryTask', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -458,7 +452,7 @@ class InventoryTaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\InventoryTask';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -512,8 +506,7 @@ class InventoryTaskApi
     public function getInventoryTaskAsync(
         string $task_id,
         string $contentType = self::contentTypes['getInventoryTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getInventoryTaskAsyncWithHttpInfo($task_id, $contentType)
             ->then(
                 function ($response) {
@@ -534,8 +527,7 @@ class InventoryTaskApi
     public function getInventoryTaskAsyncWithHttpInfo(
         string $task_id,
         string $contentType = self::contentTypes['getInventoryTask'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\InventoryTask';
         $request = $this->getInventoryTaskRequest($task_id, $contentType);
 
@@ -543,7 +535,7 @@ class InventoryTaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -587,8 +579,7 @@ class InventoryTaskApi
     public function getInventoryTaskRequest(
         string $task_id,
         string $contentType = self::contentTypes['getInventoryTask'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'task_id' is set
         if ($task_id === null || (is_array($task_id) && count($task_id) === 0)) {
@@ -697,8 +688,7 @@ class InventoryTaskApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getInventoryTasks'][0]
-    ): \eBay\Sell\Feed\Model\InventoryTaskCollection
-    {
+    ): \eBay\Sell\Feed\Model\InventoryTaskCollection {
         list($response) = $this->getInventoryTasksWithHttpInfo($feed_type, $schedule_id, $look_back_days, $date_range, $limit, $offset, $contentType);
         return $response;
     }
@@ -726,8 +716,7 @@ class InventoryTaskApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getInventoryTasks'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getInventoryTasksRequest($feed_type, $schedule_id, $look_back_days, $date_range, $limit, $offset, $contentType);
 
         try {
@@ -753,9 +742,9 @@ class InventoryTaskApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\InventoryTaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\InventoryTaskCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -797,7 +786,7 @@ class InventoryTaskApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\InventoryTaskCollection';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -861,8 +850,7 @@ class InventoryTaskApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getInventoryTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getInventoryTasksAsyncWithHttpInfo($feed_type, $schedule_id, $look_back_days, $date_range, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
@@ -893,8 +881,7 @@ class InventoryTaskApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getInventoryTasks'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\InventoryTaskCollection';
         $request = $this->getInventoryTasksRequest($feed_type, $schedule_id, $look_back_days, $date_range, $limit, $offset, $contentType);
 
@@ -902,7 +889,7 @@ class InventoryTaskApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -956,8 +943,7 @@ class InventoryTaskApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getInventoryTasks'][0]
-    ): Request
-    {
+    ): Request {
 
 
 

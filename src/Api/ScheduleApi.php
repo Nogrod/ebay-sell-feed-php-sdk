@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ScheduleApi
  * PHP version 8.1
@@ -156,8 +157,7 @@ class ScheduleApi
     public function createSchedule(
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
-    ): array
-    {
+    ): array {
         list($response) = $this->createScheduleWithHttpInfo($create_user_schedule_request, $contentType);
         return $response;
     }
@@ -175,8 +175,7 @@ class ScheduleApi
     public function createScheduleWithHttpInfo(
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
-    ): array
-    {
+    ): array {
         $request = $this->createScheduleRequest($create_user_schedule_request, $contentType);
 
         try {
@@ -202,9 +201,9 @@ class ScheduleApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 201:
-                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('object', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -246,7 +245,7 @@ class ScheduleApi
             }
 
             $returnType = 'object';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -300,8 +299,7 @@ class ScheduleApi
     public function createScheduleAsync(
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->createScheduleAsyncWithHttpInfo($create_user_schedule_request, $contentType)
             ->then(
                 function ($response) {
@@ -322,8 +320,7 @@ class ScheduleApi
     public function createScheduleAsyncWithHttpInfo(
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = 'object';
         $request = $this->createScheduleRequest($create_user_schedule_request, $contentType);
 
@@ -331,7 +328,7 @@ class ScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -375,8 +372,7 @@ class ScheduleApi
     public function createScheduleRequest(
         \eBay\Sell\Feed\Model\CreateUserScheduleRequest $create_user_schedule_request,
         string $contentType = self::contentTypes['createSchedule'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'create_user_schedule_request' is set
         if ($create_user_schedule_request === null || (is_array($create_user_schedule_request) && count($create_user_schedule_request) === 0)) {
@@ -474,8 +470,7 @@ class ScheduleApi
     public function deleteSchedule(
         string $schedule_id,
         string $contentType = self::contentTypes['deleteSchedule'][0]
-    ): void
-    {
+    ): void {
         $this->deleteScheduleWithHttpInfo($schedule_id, $contentType);
     }
 
@@ -492,8 +487,7 @@ class ScheduleApi
     public function deleteScheduleWithHttpInfo(
         string $schedule_id,
         string $contentType = self::contentTypes['deleteSchedule'][0]
-    ): array
-    {
+    ): array {
         $request = $this->deleteScheduleRequest($schedule_id, $contentType);
 
         try {
@@ -540,8 +534,7 @@ class ScheduleApi
     public function deleteScheduleAsync(
         string $schedule_id,
         string $contentType = self::contentTypes['deleteSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->deleteScheduleAsyncWithHttpInfo($schedule_id, $contentType)
             ->then(
                 function ($response) {
@@ -562,8 +555,7 @@ class ScheduleApi
     public function deleteScheduleAsyncWithHttpInfo(
         string $schedule_id,
         string $contentType = self::contentTypes['deleteSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->deleteScheduleRequest($schedule_id, $contentType);
 
@@ -602,8 +594,7 @@ class ScheduleApi
     public function deleteScheduleRequest(
         string $schedule_id,
         string $contentType = self::contentTypes['deleteSchedule'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'schedule_id' is set
         if ($schedule_id === null || (is_array($schedule_id) && count($schedule_id) === 0)) {
@@ -702,8 +693,7 @@ class ScheduleApi
     public function getLatestResultFile(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): \SplFileObject
-    {
+    ): \SplFileObject {
         list($response) = $this->getLatestResultFileWithHttpInfo($schedule_id, $contentType);
         return $response;
     }
@@ -721,8 +711,7 @@ class ScheduleApi
     public function getLatestResultFileWithHttpInfo(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getLatestResultFileRequest($schedule_id, $contentType);
 
         try {
@@ -748,9 +737,9 @@ class ScheduleApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\SplFileObject', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\SplFileObject', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -792,7 +781,7 @@ class ScheduleApi
             }
 
             $returnType = '\SplFileObject';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -846,8 +835,7 @@ class ScheduleApi
     public function getLatestResultFileAsync(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getLatestResultFileAsyncWithHttpInfo($schedule_id, $contentType)
             ->then(
                 function ($response) {
@@ -868,8 +856,7 @@ class ScheduleApi
     public function getLatestResultFileAsyncWithHttpInfo(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\SplFileObject';
         $request = $this->getLatestResultFileRequest($schedule_id, $contentType);
 
@@ -877,7 +864,7 @@ class ScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -921,8 +908,7 @@ class ScheduleApi
     public function getLatestResultFileRequest(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'schedule_id' is set
         if ($schedule_id === null || (is_array($schedule_id) && count($schedule_id) === 0)) {
@@ -1021,8 +1007,7 @@ class ScheduleApi
     public function getSchedule(
         string $schedule_id,
         string $contentType = self::contentTypes['getSchedule'][0]
-    ): \eBay\Sell\Feed\Model\UserScheduleResponse
-    {
+    ): \eBay\Sell\Feed\Model\UserScheduleResponse {
         list($response) = $this->getScheduleWithHttpInfo($schedule_id, $contentType);
         return $response;
     }
@@ -1040,8 +1025,7 @@ class ScheduleApi
     public function getScheduleWithHttpInfo(
         string $schedule_id,
         string $contentType = self::contentTypes['getSchedule'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getScheduleRequest($schedule_id, $contentType);
 
         try {
@@ -1067,9 +1051,9 @@ class ScheduleApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\UserScheduleResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\UserScheduleResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1111,7 +1095,7 @@ class ScheduleApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\UserScheduleResponse';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1165,8 +1149,7 @@ class ScheduleApi
     public function getScheduleAsync(
         string $schedule_id,
         string $contentType = self::contentTypes['getSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getScheduleAsyncWithHttpInfo($schedule_id, $contentType)
             ->then(
                 function ($response) {
@@ -1187,8 +1170,7 @@ class ScheduleApi
     public function getScheduleAsyncWithHttpInfo(
         string $schedule_id,
         string $contentType = self::contentTypes['getSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\UserScheduleResponse';
         $request = $this->getScheduleRequest($schedule_id, $contentType);
 
@@ -1196,7 +1178,7 @@ class ScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1240,8 +1222,7 @@ class ScheduleApi
     public function getScheduleRequest(
         string $schedule_id,
         string $contentType = self::contentTypes['getSchedule'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'schedule_id' is set
         if ($schedule_id === null || (is_array($schedule_id) && count($schedule_id) === 0)) {
@@ -1340,8 +1321,7 @@ class ScheduleApi
     public function getScheduleTemplate(
         string $schedule_template_id,
         string $contentType = self::contentTypes['getScheduleTemplate'][0]
-    ): \eBay\Sell\Feed\Model\ScheduleTemplateResponse
-    {
+    ): \eBay\Sell\Feed\Model\ScheduleTemplateResponse {
         list($response) = $this->getScheduleTemplateWithHttpInfo($schedule_template_id, $contentType);
         return $response;
     }
@@ -1359,8 +1339,7 @@ class ScheduleApi
     public function getScheduleTemplateWithHttpInfo(
         string $schedule_template_id,
         string $contentType = self::contentTypes['getScheduleTemplate'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getScheduleTemplateRequest($schedule_template_id, $contentType);
 
         try {
@@ -1386,9 +1365,9 @@ class ScheduleApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\ScheduleTemplateResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\ScheduleTemplateResponse', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1430,7 +1409,7 @@ class ScheduleApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\ScheduleTemplateResponse';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1484,8 +1463,7 @@ class ScheduleApi
     public function getScheduleTemplateAsync(
         string $schedule_template_id,
         string $contentType = self::contentTypes['getScheduleTemplate'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getScheduleTemplateAsyncWithHttpInfo($schedule_template_id, $contentType)
             ->then(
                 function ($response) {
@@ -1506,8 +1484,7 @@ class ScheduleApi
     public function getScheduleTemplateAsyncWithHttpInfo(
         string $schedule_template_id,
         string $contentType = self::contentTypes['getScheduleTemplate'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\ScheduleTemplateResponse';
         $request = $this->getScheduleTemplateRequest($schedule_template_id, $contentType);
 
@@ -1515,7 +1492,7 @@ class ScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1559,8 +1536,7 @@ class ScheduleApi
     public function getScheduleTemplateRequest(
         string $schedule_template_id,
         string $contentType = self::contentTypes['getScheduleTemplate'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'schedule_template_id' is set
         if ($schedule_template_id === null || (is_array($schedule_template_id) && count($schedule_template_id) === 0)) {
@@ -1663,8 +1639,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getScheduleTemplates'][0]
-    ): \eBay\Sell\Feed\Model\ScheduleTemplateCollection
-    {
+    ): \eBay\Sell\Feed\Model\ScheduleTemplateCollection {
         list($response) = $this->getScheduleTemplatesWithHttpInfo($feed_type, $limit, $offset, $contentType);
         return $response;
     }
@@ -1686,8 +1661,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getScheduleTemplates'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getScheduleTemplatesRequest($feed_type, $limit, $offset, $contentType);
 
         try {
@@ -1713,9 +1687,9 @@ class ScheduleApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\ScheduleTemplateCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\ScheduleTemplateCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1757,7 +1731,7 @@ class ScheduleApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\ScheduleTemplateCollection';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -1815,8 +1789,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getScheduleTemplates'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getScheduleTemplatesAsyncWithHttpInfo($feed_type, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
@@ -1841,8 +1814,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getScheduleTemplates'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\ScheduleTemplateCollection';
         $request = $this->getScheduleTemplatesRequest($feed_type, $limit, $offset, $contentType);
 
@@ -1850,7 +1822,7 @@ class ScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -1898,8 +1870,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getScheduleTemplates'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'feed_type' is set
         if ($feed_type === null || (is_array($feed_type) && count($feed_type) === 0)) {
@@ -2023,8 +1994,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getSchedules'][0]
-    ): \eBay\Sell\Feed\Model\UserScheduleCollection
-    {
+    ): \eBay\Sell\Feed\Model\UserScheduleCollection {
         list($response) = $this->getSchedulesWithHttpInfo($feed_type, $limit, $offset, $contentType);
         return $response;
     }
@@ -2046,8 +2016,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getSchedules'][0]
-    ): array
-    {
+    ): array {
         $request = $this->getSchedulesRequest($feed_type, $limit, $offset, $contentType);
 
         try {
@@ -2073,9 +2042,9 @@ class ScheduleApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
+            switch ($statusCode) {
                 case 200:
-                    if (in_array('\eBay\Sell\Feed\Model\UserScheduleCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array('\eBay\Sell\Feed\Model\UserScheduleCollection', ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2117,7 +2086,7 @@ class ScheduleApi
             }
 
             $returnType = '\eBay\Sell\Feed\Model\UserScheduleCollection';
-            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+            if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
@@ -2175,8 +2144,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getSchedules'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->getSchedulesAsyncWithHttpInfo($feed_type, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
@@ -2201,8 +2169,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getSchedules'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '\eBay\Sell\Feed\Model\UserScheduleCollection';
         $request = $this->getSchedulesRequest($feed_type, $limit, $offset, $contentType);
 
@@ -2210,7 +2177,7 @@ class ScheduleApi
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'])) {
+                    if (in_array($returnType, ['\SplFileObject', '\Psr\Http\Message\StreamInterface'], true)) {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
@@ -2258,8 +2225,7 @@ class ScheduleApi
         ?string $limit = null,
         ?string $offset = null,
         string $contentType = self::contentTypes['getSchedules'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'feed_type' is set
         if ($feed_type === null || (is_array($feed_type) && count($feed_type) === 0)) {
@@ -2381,8 +2347,7 @@ class ScheduleApi
         string $schedule_id,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
-    ): void
-    {
+    ): void {
         $this->updateScheduleWithHttpInfo($schedule_id, $update_user_schedule_request, $contentType);
     }
 
@@ -2401,8 +2366,7 @@ class ScheduleApi
         string $schedule_id,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
-    ): array
-    {
+    ): array {
         $request = $this->updateScheduleRequest($schedule_id, $update_user_schedule_request, $contentType);
 
         try {
@@ -2451,8 +2415,7 @@ class ScheduleApi
         string $schedule_id,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         return $this->updateScheduleAsyncWithHttpInfo($schedule_id, $update_user_schedule_request, $contentType)
             ->then(
                 function ($response) {
@@ -2475,8 +2438,7 @@ class ScheduleApi
         string $schedule_id,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
-    ): PromiseInterface
-    {
+    ): PromiseInterface {
         $returnType = '';
         $request = $this->updateScheduleRequest($schedule_id, $update_user_schedule_request, $contentType);
 
@@ -2517,8 +2479,7 @@ class ScheduleApi
         string $schedule_id,
         \eBay\Sell\Feed\Model\UpdateUserScheduleRequest $update_user_schedule_request,
         string $contentType = self::contentTypes['updateSchedule'][0]
-    ): Request
-    {
+    ): Request {
 
         // verify the required parameter 'schedule_id' is set
         if ($schedule_id === null || (is_array($schedule_id) && count($schedule_id) === 0)) {
