@@ -43,6 +43,7 @@ src/Api/ScheduleApi.php
 src/Api/TaskApi.php
 src/ApiException.php
 src/Configuration.php
+src/FormDataProcessor.php
 src/HeaderSelector.php
 src/Model/CreateInventoryTaskRequest.php
 src/Model/CreateOrderTaskRequest.php
