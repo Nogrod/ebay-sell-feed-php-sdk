@@ -1,4 +1,4 @@
-# # CustomerServiceMetricTaskCollection
+# CustomerServiceMetricTaskCollection
 
 ## Properties
 

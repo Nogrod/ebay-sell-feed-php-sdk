@@ -1,4 +1,4 @@
-# # UpdateUserScheduleRequest
+# UpdateUserScheduleRequest
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # InventoryTaskCollection
+# InventoryTaskCollection
 
 ## Properties
 

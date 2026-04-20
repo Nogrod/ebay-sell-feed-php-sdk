@@ -1,4 +1,4 @@
-# # SupportedConfiguration
+# SupportedConfiguration
 
 ## Properties
 

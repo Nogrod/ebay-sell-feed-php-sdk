@@ -1,4 +1,4 @@
-# # CreateUserScheduleRequest
+# CreateUserScheduleRequest
 
 ## Properties
 

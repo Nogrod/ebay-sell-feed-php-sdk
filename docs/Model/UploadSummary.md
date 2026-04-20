@@ -1,4 +1,4 @@
-# # UploadSummary
+# UploadSummary
 
 ## Properties
 

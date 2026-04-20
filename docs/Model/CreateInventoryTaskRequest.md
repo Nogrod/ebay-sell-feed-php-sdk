@@ -1,4 +1,4 @@
-# # CreateInventoryTaskRequest
+# CreateInventoryTaskRequest
 
 ## Properties
 

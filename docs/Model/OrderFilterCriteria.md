@@ -1,4 +1,4 @@
-# # OrderFilterCriteria
+# OrderFilterCriteria
 
 ## Properties
 

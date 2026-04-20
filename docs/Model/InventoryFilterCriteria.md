@@ -1,4 +1,4 @@
-# # InventoryFilterCriteria
+# InventoryFilterCriteria
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# # DateRange
+# DateRange
 
 ## Properties
 

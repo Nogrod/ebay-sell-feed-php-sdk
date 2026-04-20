@@ -1,4 +1,4 @@
-# # UserScheduleResponse
+# UserScheduleResponse
 
 ## Properties
 

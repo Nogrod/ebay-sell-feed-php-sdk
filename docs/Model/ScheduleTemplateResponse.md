@@ -1,4 +1,4 @@
-# # ScheduleTemplateResponse
+# ScheduleTemplateResponse
 
 ## Properties
 

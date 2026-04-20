@@ -1,4 +1,4 @@
-# # CreateServiceMetricsTaskRequest
+# CreateServiceMetricsTaskRequest
 
 ## Properties
 

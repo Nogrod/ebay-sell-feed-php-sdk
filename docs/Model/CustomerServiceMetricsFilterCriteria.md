@@ -1,4 +1,4 @@
-# # CustomerServiceMetricsFilterCriteria
+# CustomerServiceMetricsFilterCriteria
 
 ## Properties
 

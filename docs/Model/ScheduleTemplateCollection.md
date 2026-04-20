@@ -1,4 +1,4 @@
-# # ScheduleTemplateCollection
+# ScheduleTemplateCollection
 
 ## Properties
 
