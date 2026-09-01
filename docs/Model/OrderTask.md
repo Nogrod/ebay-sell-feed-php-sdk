@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **feed_type** | **string** | The feed type associated with the task. | [optional]
 **filter_criteria** | [**\eBay\Sell\Feed\Model\OrderFilterCriteria**](OrderFilterCriteria.md) | A container that returns the filter criteria used. | [optional]
 **schema_version** | **string** | The schema version number associated with the create task. | [optional]
-**status** | [**\eBay\Sell\Feed\Model\FeedStatusEnum**](FeedStatusEnum.md) | The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED&lt;/code&gt; and &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt; | [optional]
+**status** | **string** | The enumeration value that indicates the state of the task that was submitted in the request. See &lt;strong&gt;FeedStatusEnum&lt;/strong&gt; for information. &lt;p&gt;The values &lt;code&gt;COMPLETED&lt;/code&gt; and &lt;code&gt;COMPLETED_WITH_ERROR&lt;/code&gt; indicate the Order Report file is ready to download.&lt;/p&gt; | [optional]
 **task_id** | **string** | The ID of the task that was submitted in the request. | [optional]
 **upload_summary** | [**\eBay\Sell\Feed\Model\UploadSummary**](UploadSummary.md) | This container provides summary information on an upload feed (not applicable for download feed types). | [optional]
 

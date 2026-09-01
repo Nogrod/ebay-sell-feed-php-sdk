@@ -60,10 +60,10 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'customer_service_metric_type' => '\eBay\Sell\Feed\Model\CustomerServiceMetricTypeEnum',
-        'evaluation_marketplace_id' => '\eBay\Sell\Feed\Model\MarketplaceIdEnum',
+        'customer_service_metric_type' => 'string',
+        'evaluation_marketplace_id' => 'string',
         'listing_categories' => 'string[]',
-        'shipping_regions' => '\eBay\Sell\Feed\Model\ShippingRegionTypeEnum[]'
+        'shipping_regions' => 'string[]'
     ];
 
     /**
@@ -289,9 +289,9 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     /**
      * Gets customer_service_metric_type
      *
-     * @return \eBay\Sell\Feed\Model\CustomerServiceMetricTypeEnum|null
+     * @return string|null
      */
-    public function getCustomerServiceMetricType(): ?\eBay\Sell\Feed\Model\CustomerServiceMetricTypeEnum
+    public function getCustomerServiceMetricType(): ?string
     {
         return $this->container['customer_service_metric_type'];
     }
@@ -299,11 +299,11 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     /**
      * Sets customer_service_metric_type
      *
-     * @param \eBay\Sell\Feed\Model\CustomerServiceMetricTypeEnum|null $customer_service_metric_type An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.
+     * @param string|null $customer_service_metric_type An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.
      *
      * @return $this
      */
-    public function setCustomerServiceMetricType(?\eBay\Sell\Feed\Model\CustomerServiceMetricTypeEnum $customer_service_metric_type): static
+    public function setCustomerServiceMetricType(?string $customer_service_metric_type): static
     {
         if (is_null($customer_service_metric_type)) {
             throw new InvalidArgumentException('non-nullable customer_service_metric_type cannot be null');
@@ -316,9 +316,9 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     /**
      * Gets evaluation_marketplace_id
      *
-     * @return \eBay\Sell\Feed\Model\MarketplaceIdEnum|null
+     * @return string|null
      */
-    public function getEvaluationMarketplaceId(): ?\eBay\Sell\Feed\Model\MarketplaceIdEnum
+    public function getEvaluationMarketplaceId(): ?string
     {
         return $this->container['evaluation_marketplace_id'];
     }
@@ -326,11 +326,11 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     /**
      * Sets evaluation_marketplace_id
      *
-     * @param \eBay\Sell\Feed\Model\MarketplaceIdEnum|null $evaluation_marketplace_id An enumeration value that specifies the eBay marketplace where the evaluation occurs.
+     * @param string|null $evaluation_marketplace_id An enumeration value that specifies the eBay marketplace where the evaluation occurs.
      *
      * @return $this
      */
-    public function setEvaluationMarketplaceId(?\eBay\Sell\Feed\Model\MarketplaceIdEnum $evaluation_marketplace_id): static
+    public function setEvaluationMarketplaceId(?string $evaluation_marketplace_id): static
     {
         if (is_null($evaluation_marketplace_id)) {
             throw new InvalidArgumentException('non-nullable evaluation_marketplace_id cannot be null');
@@ -370,7 +370,7 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     /**
      * Gets shipping_regions
      *
-     * @return \eBay\Sell\Feed\Model\ShippingRegionTypeEnum[]|null
+     * @return string[]|null
      */
     public function getShippingRegions(): ?array
     {
@@ -380,7 +380,7 @@ class CustomerServiceMetricsFilterCriteria implements ModelInterface, ArrayAcces
     /**
      * Sets shipping_regions
      *
-     * @param \eBay\Sell\Feed\Model\ShippingRegionTypeEnum[]|null $shipping_regions A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. <p> <span class=\"tablenote\"><strong>Note: </strong>Pass this attribute to narrow down your filter results for the <code>ITEM_NOT_RECEIVED</code> customerServiceMetricType.</span></p> <p>Supported categories include:</p><p><code>primary(L1) category Id</code></p>
+     * @param string[]|null $shipping_regions A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. <p> <span class=\"tablenote\"><strong>Note: </strong>Pass this attribute to narrow down your filter results for the <code>ITEM_NOT_RECEIVED</code> customerServiceMetricType.</span></p> <p>Supported categories include:</p><p><code>primary(L1) category Id</code></p>
      *
      * @return $this
      */

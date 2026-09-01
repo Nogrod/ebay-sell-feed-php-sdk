@@ -66,7 +66,7 @@ class ServiceMetricsTask implements ModelInterface, ArrayAccess, JsonSerializabl
         'feed_type' => 'string',
         'filter_criteria' => '\eBay\Sell\Feed\Model\CustomerServiceMetricsFilterCriteria',
         'schema_version' => 'string',
-        'status' => '\eBay\Sell\Feed\Model\FeedStatusEnum',
+        'status' => 'string',
         'task_id' => 'string'
     ];
 
@@ -479,9 +479,9 @@ class ServiceMetricsTask implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Gets status
      *
-     * @return \eBay\Sell\Feed\Model\FeedStatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Sell\Feed\Model\FeedStatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -489,11 +489,11 @@ class ServiceMetricsTask implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets status
      *
-     * @param \eBay\Sell\Feed\Model\FeedStatusEnum|null $status An enumeration value that indicates the state of the task.
+     * @param string|null $status An enumeration value that indicates the state of the task.
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Sell\Feed\Model\FeedStatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

@@ -62,7 +62,7 @@ class OrderFilterCriteria implements ModelInterface, ArrayAccess, JsonSerializab
     protected static array $openAPITypes = [
         'creation_date_range' => '\eBay\Sell\Feed\Model\DateRange',
         'modified_date_range' => '\eBay\Sell\Feed\Model\DateRange',
-        'order_status' => '\eBay\Sell\Feed\Model\OrderStatusEnum'
+        'order_status' => 'string'
     ];
 
     /**
@@ -336,9 +336,9 @@ class OrderFilterCriteria implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Gets order_status
      *
-     * @return \eBay\Sell\Feed\Model\OrderStatusEnum|null
+     * @return string|null
      */
-    public function getOrderStatus(): ?\eBay\Sell\Feed\Model\OrderStatusEnum
+    public function getOrderStatus(): ?string
     {
         return $this->container['order_status'];
     }
@@ -346,11 +346,11 @@ class OrderFilterCriteria implements ModelInterface, ArrayAccess, JsonSerializab
     /**
      * Sets order_status
      *
-     * @param \eBay\Sell\Feed\Model\OrderStatusEnum|null $order_status The order status of the orders returned. If the filter is omitted from the <strong>createOrderTask</strong> call, orders that are in both <code>ACTIVE</code> and <code>COMPLETED</code> states are returned.
+     * @param string|null $order_status The order status of the orders returned. If the filter is omitted from the <strong>createOrderTask</strong> call, orders that are in both <code>ACTIVE</code> and <code>COMPLETED</code> states are returned.
      *
      * @return $this
      */
-    public function setOrderStatus(?\eBay\Sell\Feed\Model\OrderStatusEnum $order_status): static
+    public function setOrderStatus(?string $order_status): static
     {
         if (is_null($order_status)) {
             throw new InvalidArgumentException('non-nullable order_status cannot be null');

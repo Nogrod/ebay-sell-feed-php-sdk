@@ -61,7 +61,7 @@ class InventoryTask implements ModelInterface, ArrayAccess, JsonSerializable
      */
     protected static array $openAPITypes = [
         'task_id' => 'string',
-        'status' => '\eBay\Sell\Feed\Model\FeedStatusEnum',
+        'status' => 'string',
         'feed_type' => 'string',
         'creation_date' => 'string',
         'completion_date' => 'string',
@@ -351,9 +351,9 @@ class InventoryTask implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets status
      *
-     * @return \eBay\Sell\Feed\Model\FeedStatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Sell\Feed\Model\FeedStatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -361,11 +361,11 @@ class InventoryTask implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets status
      *
-     * @param \eBay\Sell\Feed\Model\FeedStatusEnum|null $status The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file).
+     * @param string|null $status The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file).
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Sell\Feed\Model\FeedStatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

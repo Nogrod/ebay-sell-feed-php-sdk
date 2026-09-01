@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **feed_type** | **string** | The feed type associated with the task. | [optional]
 **filter_criteria** | [**\eBay\Sell\Feed\Model\CustomerServiceMetricsFilterCriteria**](CustomerServiceMetricsFilterCriteria.md) | This container shows the criteria set for the report. | [optional]
 **schema_version** | **string** | The schema version number of the file format. If omitted, the default value is used. &lt;p&gt;&lt;strong&gt;Default value: &lt;/strong&gt;&lt;code&gt;1.0&lt;/code&gt;&lt;p&gt; | [optional]
-**status** | [**\eBay\Sell\Feed\Model\FeedStatusEnum**](FeedStatusEnum.md) | An enumeration value that indicates the state of the task. | [optional]
+**status** | **string** | An enumeration value that indicates the state of the task. | [optional]
 **task_id** | **string** | The unique eBay-assigned ID of the task. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

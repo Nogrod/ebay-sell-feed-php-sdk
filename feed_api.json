@@ -4338,8 +4338,8 @@
             "format": "int32"
           },
           "preferredTriggerDayOfWeek": {
-            "description": "The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required and optionally provides a default value.",
-            "$ref": "#/components/schemas/DayOfWeekEnum"
+            "type": "string",
+            "description": "The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required and optionally provides a default value."
           },
           "preferredTriggerHour": {
             "type": "string",
@@ -4441,12 +4441,12 @@
         "type": "object",
         "properties": {
           "customerServiceMetricType": {
-            "description": "An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance.",
-            "$ref": "#/components/schemas/CustomerServiceMetricTypeEnum"
+            "type": "string",
+            "description": "An enumeration value that specifies the customer service metric that eBay tracks to measure seller performance."
           },
           "evaluationMarketplaceId": {
-            "description": "An enumeration value that specifies the eBay marketplace where the evaluation occurs.",
-            "$ref": "#/components/schemas/MarketplaceIdEnum"
+            "type": "string",
+            "description": "An enumeration value that specifies the eBay marketplace where the evaluation occurs."
           },
           "listingCategories": {
             "type": "array",
@@ -4459,7 +4459,7 @@
             "type": "array",
             "description": "A list of shipping region enumeration values on which the service metric is measured. This comma delimited array allows the seller to customize the report to focus on domestic or international shipping. <p> <span class=\"tablenote\"><strong>Note: </strong>Pass this attribute to narrow down your filter results for the <code>ITEM_NOT_RECEIVED</code> customerServiceMetricType.</span></p> <p>Supported categories include:</p><p><code>primary(L1) category Id</code></p>",
             "items": {
-              "$ref": "#/components/schemas/ShippingRegionTypeEnum"
+              "type": "string"
             }
           }
         },
@@ -4604,8 +4604,8 @@
         "type": "object",
         "properties": {
           "listingFormat": {
-            "description": "The listing format for the ActiveInventoryReport being created. Supported types are:<br><ul><li><code>AUCTION</code></li><li><code>FIXED_PRICE</code></li></ul>",
-            "$ref": "#/components/schemas/ListingFormatEnum"
+            "type": "string",
+            "description": "The listing format for the ActiveInventoryReport being created. Supported types are:<br><ul><li><code>AUCTION</code></li><li><code>FIXED_PRICE</code></li></ul>"
           }
         },
         "description": "This container is used to set the filter criteria for the ActiveInventoryReport. A seller can create an ActiveInventoryReport for a single listing format."
@@ -4619,8 +4619,8 @@
             "description": "The ID of the task. This ID is generated when the task was created by the <strong>createInventoryTask</strong> method."
           },
           "status": {
-            "description": "The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file).",
-            "$ref": "#/components/schemas/FeedStatusEnum"
+            "type": "string",
+            "description": "The status of the task. Users must wait until status is complete before moving on to the next step (such as uploading/downloading a file)."
           },
           "feedType": {
             "type": "string",
@@ -4759,8 +4759,8 @@
             "$ref": "#/components/schemas/DateRange"
           },
           "orderStatus": {
-            "description": "The order status of the orders returned. If the filter is omitted from the <strong>createOrderTask</strong> call, orders that are in both <code>ACTIVE</code> and <code>COMPLETED</code> states are returned.",
-            "$ref": "#/components/schemas/OrderStatusEnum"
+            "type": "string",
+            "description": "The order status of the orders returned. If the filter is omitted from the <strong>createOrderTask</strong> call, orders that are in both <code>ACTIVE</code> and <code>COMPLETED</code> states are returned."
           }
         },
         "description": "The type that defines the fields for the order filters."
@@ -4801,8 +4801,8 @@
             "description": "The schema version number associated with the create task."
           },
           "status": {
-            "description": "The enumeration value that indicates the state of the task that was submitted in the request. See <strong>FeedStatusEnum</strong> for information. <p>The values <code>COMPLETED</code> and <code>COMPLETED_WITH_ERROR</code> indicate the Order Report file is ready to download.</p>",
-            "$ref": "#/components/schemas/FeedStatusEnum"
+            "type": "string",
+            "description": "The enumeration value that indicates the state of the task that was submitted in the request. See <strong>FeedStatusEnum</strong> for information. <p>The values <code>COMPLETED</code> and <code>COMPLETED_WITH_ERROR</code> indicate the Order Report file is ready to download.</p>"
           },
           "taskId": {
             "type": "string",
@@ -4903,8 +4903,8 @@
             "description": "The feed type of the schedule template. <p> <span class=\"tablenote\"><strong>Note:</strong> When calling <strong>createSchedule</strong> and <strong>updateSchedule</strong> methods, you must match the feed type specified by the schedule template (this <strong>feedType</strong>).</span></p>"
           },
           "frequency": {
-            "description": "This field specifies how often the schedule is generated. If set to <code>HALF_HOUR</code> or <code>ONE_HOUR</code>, you cannot set a <strong>preferredTriggerHour</strong> using <strong>createSchedule</strong> or <strong>updateSchedule</strong>.",
-            "$ref": "#/components/schemas/FrequencyEnum"
+            "type": "string",
+            "description": "This field specifies how often the schedule is generated. If set to <code>HALF_HOUR</code> or <code>ONE_HOUR</code>, you cannot set a <strong>preferredTriggerHour</strong> using <strong>createSchedule</strong> or <strong>updateSchedule</strong>."
           },
           "name": {
             "type": "string",
@@ -4915,8 +4915,8 @@
             "description": "The ID of the template. Use this ID to create a schedule based on the properties of this schedule template."
           },
           "status": {
-            "description": "The present status of the template. You cannot create or modify a schedule using a template with an <code>INACTIVE</code> status. ",
-            "$ref": "#/components/schemas/StatusEnum"
+            "type": "string",
+            "description": "The present status of the template. You cannot create or modify a schedule using a template with an <code>INACTIVE</code> status. "
           },
           "supportedConfigurations": {
             "type": "array",
@@ -4956,8 +4956,8 @@
             "description": "The schema version number of the file format. If omitted, the default value is used. <p><strong>Default value: </strong><code>1.0</code><p>"
           },
           "status": {
-            "description": "An enumeration value that indicates the state of the task.",
-            "$ref": "#/components/schemas/FeedStatusEnum"
+            "type": "string",
+            "description": "An enumeration value that indicates the state of the task."
           },
           "taskId": {
             "type": "string",
@@ -5007,8 +5007,8 @@
             "description": "Properties supported by the template. Properties can include the following: <ul><li><strong>scheduleStartDate:</strong> The timestamp that the report generation (subscription) begins. After this timestamp, the schedule status becomes active until either the scheduleEndDate occurs or the scheduleTemplate becomes inactive.<br /><strong>Format</strong>: UTC <code>yyyy-MM-dd<strong>T</strong>HH<strong>Z</strong></code></li><li><strong>scheduleEndDate:</strong> The timestamp that the report generation (subscription) ends. After this date, the schedule status becomes INACTIVE.<br /><strong>Format</strong>: UTC <code>yyyy-MM-dd<strong>T</strong>HH<strong>Z</strong></code></li><li><strong>schemaVersion:</strong> The schema version of the schedule templates feedType. This field is required if the feedType has a schema version.</li><li><strong>preferredTriggerDayOfMonth:</strong> The preferred day of the month to trigger the schedule. </li><li><strong>preferredTriggerDayOfWeek:</strong> The preferred day of the week to trigger the schedule. </li><li><strong>preferredTriggerHour:</strong> The preferred two-digit hour of the day to trigger the schedule.<br /><strong>Format</strong>: UTC <code>hhZ</code></li></ul>"
           },
           "usage": {
-            "description": "Whether the specified property is REQUIRED or OPTIONAL.",
-            "$ref": "#/components/schemas/ConfigurationsUsageEnum"
+            "type": "string",
+            "description": "Whether the specified property is REQUIRED or OPTIONAL."
           }
         },
         "description": "An array that defines the configuration supported by this template. This includes specified properties and usage (whether the property is REQUIRED or OPTIONAL), and an optional default value."
@@ -5037,8 +5037,8 @@
             "description": "The schema version number associated with the task."
           },
           "status": {
-            "description": "The enumeration value that indicates the state of the task that was submitted in the request. See <strong>FeedStatusEnum</strong> for information. <p>The values <code>COMPLETED</code> and <code>COMPLETED_WITH_ERROR</code> indicate the Order Report file is ready to download.</p>",
-            "$ref": "#/components/schemas/FeedStatusEnum"
+            "type": "string",
+            "description": "The enumeration value that indicates the state of the task that was submitted in the request. See <strong>FeedStatusEnum</strong> for information. <p>The values <code>COMPLETED</code> and <code>COMPLETED_WITH_ERROR</code> indicate the Order Report file is ready to download.</p>"
           },
           "taskId": {
             "type": "string",
@@ -5103,8 +5103,8 @@
             "format": "int32"
           },
           "preferredTriggerDayOfWeek": {
-            "description": "The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required and optionally provides a default value.",
-            "$ref": "#/components/schemas/DayOfWeekEnum"
+            "type": "string",
+            "description": "The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required and optionally provides a default value."
           },
           "preferredTriggerHour": {
             "type": "string",
@@ -5210,8 +5210,8 @@
             "format": "int32"
           },
           "preferredTriggerDayOfWeek": {
-            "description": "The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules.",
-            "$ref": "#/components/schemas/DayOfWeekEnum"
+            "type": "string",
+            "description": "The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules."
           },
           "preferredTriggerHour": {
             "type": "string",
@@ -5238,12 +5238,12 @@
             "description": "The schema version of the <strong>feedType</strong> for the schedule."
           },
           "status": {
-            "description": "The enumeration value that indicates the state of the schedule.",
-            "$ref": "#/components/schemas/StatusEnum"
+            "type": "string",
+            "description": "The enumeration value that indicates the state of the schedule."
           },
           "statusReason": {
-            "description": "The reason the schedule is inactive.",
-            "$ref": "#/components/schemas/StatusReasonEnum"
+            "type": "string",
+            "description": "The reason the schedule is inactive."
           }
         },
         "description": "The type that defines the fields for a paginated result set of available schedules. The response consists of 0 or more sequenced <em> pages</em> where each page has 0 or more items."

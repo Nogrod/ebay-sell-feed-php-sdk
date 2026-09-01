@@ -65,7 +65,7 @@ class Task implements ModelInterface, ArrayAccess, JsonSerializable
         'detail_href' => 'string',
         'feed_type' => 'string',
         'schema_version' => 'string',
-        'status' => '\eBay\Sell\Feed\Model\FeedStatusEnum',
+        'status' => 'string',
         'task_id' => 'string',
         'upload_summary' => '\eBay\Sell\Feed\Model\UploadSummary'
     ];
@@ -452,9 +452,9 @@ class Task implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets status
      *
-     * @return \eBay\Sell\Feed\Model\FeedStatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Sell\Feed\Model\FeedStatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -462,11 +462,11 @@ class Task implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets status
      *
-     * @param \eBay\Sell\Feed\Model\FeedStatusEnum|null $status The enumeration value that indicates the state of the task that was submitted in the request. See <strong>FeedStatusEnum</strong> for information. <p>The values <code>COMPLETED</code> and <code>COMPLETED_WITH_ERROR</code> indicate the Order Report file is ready to download.</p>
+     * @param string|null $status The enumeration value that indicates the state of the task that was submitted in the request. See <strong>FeedStatusEnum</strong> for information. <p>The values <code>COMPLETED</code> and <code>COMPLETED_WITH_ERROR</code> indicate the Order Report file is ready to download.</p>
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Sell\Feed\Model\FeedStatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

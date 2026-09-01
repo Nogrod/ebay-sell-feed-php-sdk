@@ -103,17 +103,3 @@ src/Model/UploadSummary.php
 src/Model/UserScheduleCollection.php
 src/Model/UserScheduleResponse.php
 src/ObjectSerializer.php
-tests/Api/ScheduleTemplateApiTest.php
-tests/Model/ConfigurationsUsageEnumTest.php
-tests/Model/CustomerServiceMetricTypeEnumTest.php
-tests/Model/DayOfWeekEnumTest.php
-tests/Model/ErrorDetailTest.php
-tests/Model/ErrorResponseTest.php
-tests/Model/FeedStatusEnumTest.php
-tests/Model/FrequencyEnumTest.php
-tests/Model/ListingFormatEnumTest.php
-tests/Model/MarketplaceIdEnumTest.php
-tests/Model/OrderStatusEnumTest.php
-tests/Model/ShippingRegionTypeEnumTest.php
-tests/Model/StatusEnumTest.php
-tests/Model/StatusReasonEnumTest.php

@@ -61,10 +61,10 @@ class ScheduleTemplateResponse implements ModelInterface, ArrayAccess, JsonSeria
      */
     protected static array $openAPITypes = [
         'feed_type' => 'string',
-        'frequency' => '\eBay\Sell\Feed\Model\FrequencyEnum',
+        'frequency' => 'string',
         'name' => 'string',
         'schedule_template_id' => 'string',
-        'status' => '\eBay\Sell\Feed\Model\StatusEnum',
+        'status' => 'string',
         'supported_configurations' => '\eBay\Sell\Feed\Model\SupportedConfiguration[]'
     ];
 
@@ -330,9 +330,9 @@ class ScheduleTemplateResponse implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets frequency
      *
-     * @return \eBay\Sell\Feed\Model\FrequencyEnum|null
+     * @return string|null
      */
-    public function getFrequency(): ?\eBay\Sell\Feed\Model\FrequencyEnum
+    public function getFrequency(): ?string
     {
         return $this->container['frequency'];
     }
@@ -340,11 +340,11 @@ class ScheduleTemplateResponse implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets frequency
      *
-     * @param \eBay\Sell\Feed\Model\FrequencyEnum|null $frequency This field specifies how often the schedule is generated. If set to <code>HALF_HOUR</code> or <code>ONE_HOUR</code>, you cannot set a <strong>preferredTriggerHour</strong> using <strong>createSchedule</strong> or <strong>updateSchedule</strong>.
+     * @param string|null $frequency This field specifies how often the schedule is generated. If set to <code>HALF_HOUR</code> or <code>ONE_HOUR</code>, you cannot set a <strong>preferredTriggerHour</strong> using <strong>createSchedule</strong> or <strong>updateSchedule</strong>.
      *
      * @return $this
      */
-    public function setFrequency(?\eBay\Sell\Feed\Model\FrequencyEnum $frequency): static
+    public function setFrequency(?string $frequency): static
     {
         if (is_null($frequency)) {
             throw new InvalidArgumentException('non-nullable frequency cannot be null');
@@ -411,9 +411,9 @@ class ScheduleTemplateResponse implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets status
      *
-     * @return \eBay\Sell\Feed\Model\StatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Sell\Feed\Model\StatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -421,11 +421,11 @@ class ScheduleTemplateResponse implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets status
      *
-     * @param \eBay\Sell\Feed\Model\StatusEnum|null $status The present status of the template. You cannot create or modify a schedule using a template with an <code>INACTIVE</code> status.
+     * @param string|null $status The present status of the template. You cannot create or modify a schedule using a template with an <code>INACTIVE</code> status.
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Sell\Feed\Model\StatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');

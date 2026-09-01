@@ -61,7 +61,7 @@ class UpdateUserScheduleRequest implements ModelInterface, ArrayAccess, JsonSeri
      */
     protected static array $openAPITypes = [
         'preferred_trigger_day_of_month' => 'int',
-        'preferred_trigger_day_of_week' => '\eBay\Sell\Feed\Model\DayOfWeekEnum',
+        'preferred_trigger_day_of_week' => 'string',
         'preferred_trigger_hour' => 'string',
         'schedule_end_date' => 'string',
         'schedule_name' => 'string',
@@ -340,9 +340,9 @@ class UpdateUserScheduleRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Gets preferred_trigger_day_of_week
      *
-     * @return \eBay\Sell\Feed\Model\DayOfWeekEnum|null
+     * @return string|null
      */
-    public function getPreferredTriggerDayOfWeek(): ?\eBay\Sell\Feed\Model\DayOfWeekEnum
+    public function getPreferredTriggerDayOfWeek(): ?string
     {
         return $this->container['preferred_trigger_day_of_week'];
     }
@@ -350,11 +350,11 @@ class UpdateUserScheduleRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets preferred_trigger_day_of_week
      *
-     * @param \eBay\Sell\Feed\Model\DayOfWeekEnum|null $preferred_trigger_day_of_week The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required and optionally provides a default value.
+     * @param string|null $preferred_trigger_day_of_week The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules. <br /><br />This field is available as specified by the template (<strong>scheduleTemplateId</strong>). The template can specify this field as optional or required and optionally provides a default value.
      *
      * @return $this
      */
-    public function setPreferredTriggerDayOfWeek(?\eBay\Sell\Feed\Model\DayOfWeekEnum $preferred_trigger_day_of_week): static
+    public function setPreferredTriggerDayOfWeek(?string $preferred_trigger_day_of_week): static
     {
         if (is_null($preferred_trigger_day_of_week)) {
             throw new InvalidArgumentException('non-nullable preferred_trigger_day_of_week cannot be null');

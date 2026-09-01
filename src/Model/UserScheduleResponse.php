@@ -65,15 +65,15 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
         'feed_type' => 'string',
         'last_modified_date' => 'string',
         'preferred_trigger_day_of_month' => 'int',
-        'preferred_trigger_day_of_week' => '\eBay\Sell\Feed\Model\DayOfWeekEnum',
+        'preferred_trigger_day_of_week' => 'string',
         'preferred_trigger_hour' => 'string',
         'schedule_end_date' => 'string',
         'schedule_name' => 'string',
         'schedule_start_date' => 'string',
         'schedule_template_id' => 'string',
         'schema_version' => 'string',
-        'status' => '\eBay\Sell\Feed\Model\StatusEnum',
-        'status_reason' => '\eBay\Sell\Feed\Model\StatusReasonEnum'
+        'status' => 'string',
+        'status_reason' => 'string'
     ];
 
     /**
@@ -494,9 +494,9 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
     /**
      * Gets preferred_trigger_day_of_week
      *
-     * @return \eBay\Sell\Feed\Model\DayOfWeekEnum|null
+     * @return string|null
      */
-    public function getPreferredTriggerDayOfWeek(): ?\eBay\Sell\Feed\Model\DayOfWeekEnum
+    public function getPreferredTriggerDayOfWeek(): ?string
     {
         return $this->container['preferred_trigger_day_of_week'];
     }
@@ -504,11 +504,11 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
     /**
      * Sets preferred_trigger_day_of_week
      *
-     * @param \eBay\Sell\Feed\Model\DayOfWeekEnum|null $preferred_trigger_day_of_week The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules.
+     * @param string|null $preferred_trigger_day_of_week The preferred day of the week to trigger the schedule. This field can be used with <strong>preferredTriggerHour</strong> for weekly schedules.
      *
      * @return $this
      */
-    public function setPreferredTriggerDayOfWeek(?\eBay\Sell\Feed\Model\DayOfWeekEnum $preferred_trigger_day_of_week): static
+    public function setPreferredTriggerDayOfWeek(?string $preferred_trigger_day_of_week): static
     {
         if (is_null($preferred_trigger_day_of_week)) {
             throw new InvalidArgumentException('non-nullable preferred_trigger_day_of_week cannot be null');
@@ -683,9 +683,9 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
     /**
      * Gets status
      *
-     * @return \eBay\Sell\Feed\Model\StatusEnum|null
+     * @return string|null
      */
-    public function getStatus(): ?\eBay\Sell\Feed\Model\StatusEnum
+    public function getStatus(): ?string
     {
         return $this->container['status'];
     }
@@ -693,11 +693,11 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
     /**
      * Sets status
      *
-     * @param \eBay\Sell\Feed\Model\StatusEnum|null $status The enumeration value that indicates the state of the schedule.
+     * @param string|null $status The enumeration value that indicates the state of the schedule.
      *
      * @return $this
      */
-    public function setStatus(?\eBay\Sell\Feed\Model\StatusEnum $status): static
+    public function setStatus(?string $status): static
     {
         if (is_null($status)) {
             throw new InvalidArgumentException('non-nullable status cannot be null');
@@ -710,9 +710,9 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
     /**
      * Gets status_reason
      *
-     * @return \eBay\Sell\Feed\Model\StatusReasonEnum|null
+     * @return string|null
      */
-    public function getStatusReason(): ?\eBay\Sell\Feed\Model\StatusReasonEnum
+    public function getStatusReason(): ?string
     {
         return $this->container['status_reason'];
     }
@@ -720,11 +720,11 @@ class UserScheduleResponse implements ModelInterface, ArrayAccess, JsonSerializa
     /**
      * Sets status_reason
      *
-     * @param \eBay\Sell\Feed\Model\StatusReasonEnum|null $status_reason The reason the schedule is inactive.
+     * @param string|null $status_reason The reason the schedule is inactive.
      *
      * @return $this
      */
-    public function setStatusReason(?\eBay\Sell\Feed\Model\StatusReasonEnum $status_reason): static
+    public function setStatusReason(?string $status_reason): static
     {
         if (is_null($status_reason)) {
             throw new InvalidArgumentException('non-nullable status_reason cannot be null');

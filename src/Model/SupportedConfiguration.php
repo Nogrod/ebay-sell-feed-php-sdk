@@ -62,7 +62,7 @@ class SupportedConfiguration implements ModelInterface, ArrayAccess, JsonSeriali
     protected static array $openAPITypes = [
         'default_value' => 'string',
         'property' => 'string',
-        'usage' => '\eBay\Sell\Feed\Model\ConfigurationsUsageEnum'
+        'usage' => 'string'
     ];
 
     /**
@@ -336,9 +336,9 @@ class SupportedConfiguration implements ModelInterface, ArrayAccess, JsonSeriali
     /**
      * Gets usage
      *
-     * @return \eBay\Sell\Feed\Model\ConfigurationsUsageEnum|null
+     * @return string|null
      */
-    public function getUsage(): ?\eBay\Sell\Feed\Model\ConfigurationsUsageEnum
+    public function getUsage(): ?string
     {
         return $this->container['usage'];
     }
@@ -346,11 +346,11 @@ class SupportedConfiguration implements ModelInterface, ArrayAccess, JsonSeriali
     /**
      * Sets usage
      *
-     * @param \eBay\Sell\Feed\Model\ConfigurationsUsageEnum|null $usage Whether the specified property is REQUIRED or OPTIONAL.
+     * @param string|null $usage Whether the specified property is REQUIRED or OPTIONAL.
      *
      * @return $this
      */
-    public function setUsage(?\eBay\Sell\Feed\Model\ConfigurationsUsageEnum $usage): static
+    public function setUsage(?string $usage): static
     {
         if (is_null($usage)) {
             throw new InvalidArgumentException('non-nullable usage cannot be null');

@@ -60,7 +60,7 @@ class InventoryFilterCriteria implements ModelInterface, ArrayAccess, JsonSerial
      * @var array<string, string>
      */
     protected static array $openAPITypes = [
-        'listing_format' => '\eBay\Sell\Feed\Model\ListingFormatEnum'
+        'listing_format' => 'string'
     ];
 
     /**
@@ -268,9 +268,9 @@ class InventoryFilterCriteria implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets listing_format
      *
-     * @return \eBay\Sell\Feed\Model\ListingFormatEnum|null
+     * @return string|null
      */
-    public function getListingFormat(): ?\eBay\Sell\Feed\Model\ListingFormatEnum
+    public function getListingFormat(): ?string
     {
         return $this->container['listing_format'];
     }
@@ -278,11 +278,11 @@ class InventoryFilterCriteria implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets listing_format
      *
-     * @param \eBay\Sell\Feed\Model\ListingFormatEnum|null $listing_format The listing format for the ActiveInventoryReport being created. Supported types are:<br><ul><li><code>AUCTION</code></li><li><code>FIXED_PRICE</code></li></ul>
+     * @param string|null $listing_format The listing format for the ActiveInventoryReport being created. Supported types are:<br><ul><li><code>AUCTION</code></li><li><code>FIXED_PRICE</code></li></ul>
      *
      * @return $this
      */
-    public function setListingFormat(?\eBay\Sell\Feed\Model\ListingFormatEnum $listing_format): static
+    public function setListingFormat(?string $listing_format): static
     {
         if (is_null($listing_format)) {
             throw new InvalidArgumentException('non-nullable listing_format cannot be null');
