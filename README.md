@@ -1,6 +1,6 @@
 # OpenAPIClient-php
 
-<p>The <strong>Feed API</strong> lets sellers upload input files, download reports and files including their status, filter reports using URI parameters, and retrieve customer service metrics task details.</p>
+<p>The <strong>Sell Feed API</strong> lets sellers upload input files, download reports and files including their status, filter reports using URI parameters, and retrieve customer service metrics task details.</p>
 
 
 ## Installation & Usage
@@ -88,10 +88,10 @@ Class | Method | HTTP request | Description
 *ScheduleApi* | [**deleteSchedule**](docs/Api/ScheduleApi.md#deleteschedule) | **DELETE** /schedule/{schedule_id} | 
 *ScheduleApi* | [**getLatestResultFile**](docs/Api/ScheduleApi.md#getlatestresultfile) | **GET** /schedule/{schedule_id}/download_result_file | 
 *ScheduleApi* | [**getSchedule**](docs/Api/ScheduleApi.md#getschedule) | **GET** /schedule/{schedule_id} | 
-*ScheduleApi* | [**getScheduleTemplate**](docs/Api/ScheduleApi.md#getscheduletemplate) | **GET** /schedule_template/{schedule_template_id} | 
-*ScheduleApi* | [**getScheduleTemplates**](docs/Api/ScheduleApi.md#getscheduletemplates) | **GET** /schedule_template | 
 *ScheduleApi* | [**getSchedules**](docs/Api/ScheduleApi.md#getschedules) | **GET** /schedule | 
 *ScheduleApi* | [**updateSchedule**](docs/Api/ScheduleApi.md#updateschedule) | **PUT** /schedule/{schedule_id} | 
+*ScheduleTemplateApi* | [**getScheduleTemplate**](docs/Api/ScheduleTemplateApi.md#getscheduletemplate) | **GET** /schedule_template/{schedule_template_id} | 
+*ScheduleTemplateApi* | [**getScheduleTemplates**](docs/Api/ScheduleTemplateApi.md#getscheduletemplates) | **GET** /schedule_template | 
 *TaskApi* | [**createTask**](docs/Api/TaskApi.md#createtask) | **POST** /task | 
 *TaskApi* | [**getInputFile**](docs/Api/TaskApi.md#getinputfile) | **GET** /task/{task_id}/download_input_file | 
 *TaskApi* | [**getResultFile**](docs/Api/TaskApi.md#getresultfile) | **GET** /task/{task_id}/download_result_file | 
@@ -101,25 +101,38 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [ConfigurationsUsageEnum](docs/Model/ConfigurationsUsageEnum.md)
 - [CreateInventoryTaskRequest](docs/Model/CreateInventoryTaskRequest.md)
 - [CreateOrderTaskRequest](docs/Model/CreateOrderTaskRequest.md)
 - [CreateServiceMetricsTaskRequest](docs/Model/CreateServiceMetricsTaskRequest.md)
 - [CreateTaskRequest](docs/Model/CreateTaskRequest.md)
 - [CreateUserScheduleRequest](docs/Model/CreateUserScheduleRequest.md)
 - [CustomerServiceMetricTaskCollection](docs/Model/CustomerServiceMetricTaskCollection.md)
+- [CustomerServiceMetricTypeEnum](docs/Model/CustomerServiceMetricTypeEnum.md)
 - [CustomerServiceMetricsFilterCriteria](docs/Model/CustomerServiceMetricsFilterCriteria.md)
 - [DateRange](docs/Model/DateRange.md)
+- [DayOfWeekEnum](docs/Model/DayOfWeekEnum.md)
 - [Error](docs/Model/Error.md)
+- [ErrorDetail](docs/Model/ErrorDetail.md)
 - [ErrorParameter](docs/Model/ErrorParameter.md)
+- [ErrorResponse](docs/Model/ErrorResponse.md)
+- [FeedStatusEnum](docs/Model/FeedStatusEnum.md)
+- [FrequencyEnum](docs/Model/FrequencyEnum.md)
 - [InventoryFilterCriteria](docs/Model/InventoryFilterCriteria.md)
 - [InventoryTask](docs/Model/InventoryTask.md)
 - [InventoryTaskCollection](docs/Model/InventoryTaskCollection.md)
+- [ListingFormatEnum](docs/Model/ListingFormatEnum.md)
+- [MarketplaceIdEnum](docs/Model/MarketplaceIdEnum.md)
 - [OrderFilterCriteria](docs/Model/OrderFilterCriteria.md)
+- [OrderStatusEnum](docs/Model/OrderStatusEnum.md)
 - [OrderTask](docs/Model/OrderTask.md)
 - [OrderTaskCollection](docs/Model/OrderTaskCollection.md)
 - [ScheduleTemplateCollection](docs/Model/ScheduleTemplateCollection.md)
 - [ScheduleTemplateResponse](docs/Model/ScheduleTemplateResponse.md)
 - [ServiceMetricsTask](docs/Model/ServiceMetricsTask.md)
+- [ShippingRegionTypeEnum](docs/Model/ShippingRegionTypeEnum.md)
+- [StatusEnum](docs/Model/StatusEnum.md)
+- [StatusReasonEnum](docs/Model/StatusReasonEnum.md)
 - [SupportedConfiguration](docs/Model/SupportedConfiguration.md)
 - [Task](docs/Model/Task.md)
 - [TaskCollection](docs/Model/TaskCollection.md)
@@ -140,7 +153,76 @@ Class | Method | HTTP request | Description
     - **https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly**: This scope would allow signed in user to read catalog data.
     - **https://api.ebay.com/oauth/api_scope/sell.inventory**: View and manage your inventory and offers
     - **https://api.ebay.com/oauth/api_scope/sell.marketing**: View and manage your eBay marketing activities, such as ad campaigns and listing promotions
-    - **https://api.ebay.com/oauth/api_scope/sell.analytics.readonly**: View your selling analytics data, such as performance reports
+    - **https://api.ebay.com/oauth/api_scope/sell.analytics.readonly**: Read-only access to Analytics API
+    - **eBayUser**: eBay user access scope
+
+
+### bearerAuth
+
+- **Type**: Bearer authentication
+
+
+### sell_inventory_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **https://api.ebay.com/oauth/api_scope/sell.inventory**: Sell inventory access.
+
+
+### sell_fulfillment_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **https://api.ebay.com/oauth/api_scope/sell.fulfillment**: Sell fulfillment access.
+
+
+### sell_marketing_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **https://api.ebay.com/oauth/api_scope/sell.marketing**: Sell marketing access.
+
+
+### commerce_catalog_readonly_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly**: Commerce catalog readonly access.
+
+
+### sell_analytics_readonly_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **https://api.ebay.com/oauth/api_scope/sell.analytics.readonly**: Sell analytics readonly access.
+
+
+### sell_managed_fulfillment_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **https://api.ebay.com/oauth/api_scope/sell.managed.fulfillment**: Sell managed fulfillment access.
+
+
+### ebay_user_scope
+
+- **Type**: `OAuth`
+- **Flow**: `application`
+- **Authorization URL**: ``
+- **Scopes**: 
+    - **eBayUser**: eBay user access.
 
 ## Tests
 
@@ -160,5 +242,5 @@ vendor/bin/phpunit
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `v1.3.1`
-    - Generator version: `7.21.0`
+    - Generator version: `7.25.0`
 - Build package: `org.openapitools.codegen.languages.PhpNextgenClientCodegen`
