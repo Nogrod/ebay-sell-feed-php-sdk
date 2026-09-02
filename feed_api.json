@@ -1306,13 +1306,6 @@
                 "style": "simple",
                 "explode": false
               }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
             }
           },
           "400": {
@@ -3490,14 +3483,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+            "description": "Success"
           },
           "400": {
             "description": "Bad Request",

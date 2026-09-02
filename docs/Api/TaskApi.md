@@ -433,7 +433,7 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($task_id, $file): object
+uploadFile($task_id, $file)
 ```
 
 
@@ -482,8 +482,7 @@ $task_id = 'task_id_example'; // string | This path parameter is the unique iden
 $file = '/path/to/file.txt'; // \SplFileObject | The input file to upload for processing.
 
 try {
-    $result = $apiInstance->uploadFile($task_id, $file);
-    print_r($result);
+    $apiInstance->uploadFile($task_id, $file);
 } catch (Exception $e) {
     echo 'Exception when calling TaskApi->uploadFile: ', $e->getMessage(), PHP_EOL;
 }
@@ -498,7 +497,7 @@ try {
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 

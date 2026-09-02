@@ -15,7 +15,7 @@ All URIs are relative to https://api.ebay.com/sell/feed/v1, except if the operat
 ## `createSchedule()`
 
 ```php
-createSchedule($create_user_schedule_request): object
+createSchedule($create_user_schedule_request)
 ```
 
 
@@ -60,8 +60,7 @@ $apiInstance = new eBay\Sell\Feed\Api\ScheduleApi(
 $create_user_schedule_request = new \eBay\Sell\Feed\Model\CreateUserScheduleRequest(); // \eBay\Sell\Feed\Model\CreateUserScheduleRequest | In the request payload: <strong>feedType</strong> and <strong>scheduleTemplateId</strong> are required; <strong>scheduleName</strong> is optional; <strong>preferredTriggerHour</strong>, <strong>preferredTriggerDayOfWeek</strong>, <strong>preferredTriggerDayOfMonth</strong>, <strong>scheduleStartDate</strong>, <strong>scheduleEndDate</strong>, and <strong>schemaVersion</strong> are conditional.
 
 try {
-    $result = $apiInstance->createSchedule($create_user_schedule_request);
-    print_r($result);
+    $apiInstance->createSchedule($create_user_schedule_request);
 } catch (Exception $e) {
     echo 'Exception when calling ScheduleApi->createSchedule: ', $e->getMessage(), PHP_EOL;
 }
@@ -75,7 +74,7 @@ try {
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 
