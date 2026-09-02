@@ -169,7 +169,7 @@ void (empty response body)
 ## `getLatestResultFile()`
 
 ```php
-getLatestResultFile($schedule_id): object
+getLatestResultFile($schedule_id): \SplFileObject
 ```
 
 
@@ -229,7 +229,7 @@ try {
 
 ### Return type
 
-**object**
+**\SplFileObject**
 
 ### Authorization
 

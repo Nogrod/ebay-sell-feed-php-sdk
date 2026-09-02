@@ -2009,7 +2009,6 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamingOutput",
                   "type": "string",
                   "format": "binary"
                 }
@@ -2998,7 +2997,6 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamingOutput",
                   "type": "string",
                   "format": "binary"
                 }
@@ -3174,7 +3172,6 @@
             "content": {
               "application/octet-stream": {
                 "schema": {
-                  "$ref": "#/components/schemas/StreamingOutput",
                   "type": "string",
                   "format": "binary"
                 }

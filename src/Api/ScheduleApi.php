@@ -705,12 +705,12 @@ class ScheduleApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return object|\eBay\Sell\Feed\Model\Error
+     * @return \SplFileObject|\eBay\Sell\Feed\Model\Error
      */
     public function getLatestResultFile(
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
-    ): array|\eBay\Sell\Feed\Model\Error {
+    ): \SplFileObject|\eBay\Sell\Feed\Model\Error {
         list($response) = $this->getLatestResultFileWithHttpInfo($schedule_id, $contentType);
         return $response;
     }
@@ -723,7 +723,7 @@ class ScheduleApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array{0: object|\eBay\Sell\Feed\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
+     * @return array{0: \SplFileObject|\eBay\Sell\Feed\Model\Error, 1: int, 2: array<string, string[]>} [response data, HTTP status code, HTTP response headers]
      */
     public function getLatestResultFileWithHttpInfo(
         string $schedule_id,
@@ -756,7 +756,7 @@ class ScheduleApi
             switch ($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        'object',
+                        '\SplFileObject',
                         $request,
                         $response,
                     );
@@ -800,7 +800,7 @@ class ScheduleApi
             }
 
             return $this->handleResponseWithDataType(
-                'object',
+                '\SplFileObject',
                 $request,
                 $response,
             );
@@ -809,7 +809,7 @@ class ScheduleApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -886,7 +886,7 @@ class ScheduleApi
         string $schedule_id,
         string $contentType = self::contentTypes['getLatestResultFile'][0]
     ): PromiseInterface {
-        $returnType = 'object';
+        $returnType = '\SplFileObject';
         $request = $this->getLatestResultFileRequest($schedule_id, $contentType);
 
         return $this->client
